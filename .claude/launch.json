@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pavilion",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [".claude/serve.js", "4173"],
+      "port": 4173
+    }
+  ]
+}
