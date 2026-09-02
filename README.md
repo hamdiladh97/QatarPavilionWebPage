@@ -95,11 +95,12 @@ one: there, gold is always a filled bar with type reversed out of it. On screen
 
 ### Grounds
 
-The brochure has sixteen pages and **not one is a maroon field** — every page is
-ivory or sand, and maroon is reserved for the corner device, image containers
-and type. The page follows that: Programme keeps a maroon ground as the single
-dark chapter, and everything from there to the footer alternates ivory and sand
-the way the brochure alternates page to page.
+The brochure alternates two grounds: full-bleed **maroon** pages (welcome, MECC
+efforts, highlights, strategy, calendar, back cover) and warm **ivory** pages
+(cover, the five side-event pages, speakers). The page follows it page for page:
+ivory cover hero → maroon welcome → ivory programme → maroon highlights → ivory
+ministry → sand reports → deep-maroon back-cover footer, with the sweep
+alternating sides between every pair.
 
 Maroon sections carry one soft radial lift at the top-left, in `--qp-maroon-soft`.
 The brochure never has to solve flat maroon over a full spread; a screen does.
@@ -107,28 +108,25 @@ The brochure never has to solve flat maroon over a full spread; a screen does.
 > The brochure uses `#8A1539`; mecc.gov.qa uses `#8A1538`. One digit apart. This page
 > standardises on the brochure's value, as the event identity is the agreed reference.
 
-### Typography — two deliberate departures
+### Typography — one family, weight contrast
 
-The brochure is set **entirely** in Cormorant Light — verified from the embedded
-font programme, not assumed: nine subsets, every one `FontWeight 300`, plus Light
-Italic. It gets all its contrast from scale, case and colour.
-
-**First departure — a second family.** A Light high-contrast serif fails
-legibility and WCAG contrast at screen body sizes, especially reversed out of
-maroon. So **Cormorant keeps every display role** and **IBM Plex Sans carries
-anything under ~18px** — labels, times, agenda rows, nav, buttons, captions.
-
-**Second departure — a second weight.** Light holds at display scale and
-collapses below it; its hairlines thin out under ~2rem and all but vanish in
-numerals. So the display split is by *optical size*, not by role:
+The brochure is set in Cormorant and gets its hierarchy from **weight**: titles,
+kickers ("◆ Side-Event 1", "◆ Agenda"), speaker names and numerals are rendered
+Bold; body and captions are Light. (Its embedded subsets are all *named*
+`Cormorant-Light` — the bold is applied in the layout, which is why an earlier
+pass mistook the whole brochure for a single Light weight and shipped thin,
+pale titles.)
 
 | | Weight | Roles |
 |---|---|---|
-| `--qp-display-light` | Cormorant 300 | ≥ ~2.2rem — hero title, section titles, event titles, pull quote |
-| `--qp-display-bold` | Cormorant 600 | < ~2.2rem — speaker names, card and report titles, pillar labels, footer headings — **and every numeral regardless of size** |
+| `--qp-display-bold` | Cormorant 700 | every title, kicker, speaker name, card and report title, pillar label, footer heading, nav link, button, numeral |
+| `--qp-display-light` | Cormorant 400 | one role: the cover's "Side Events Programme" line |
+| `--qp-weight-body` | Cormorant 500 | body, intros, agenda rows, roles, notes — at 20px, since Light goes hairline on screen |
 
-Numerals are the stated exception: old-style figures at Light are the thinnest
-shapes on the page, so the countdown and the stat counters take 600 even at 3rem.
+Colour is the other axis, exactly as the brochure: ink titles and maroon kickers
+on light grounds, white titles and kickers on maroon, gold for rules and numerals.
+IBM Plex Sans survives only for the few labels under ~14px (status pills, unit
+labels, legal line), where a high-contrast serif breaks up.
 
 To self-host instead (recommended for an air-gapped or offline deployment), drop the
 woff2 files into `assets/fonts/`, add `@font-face` rules, and delete the
@@ -151,20 +149,16 @@ a 419pt page).
 **The layers.** Never a stroke — the brochure builds this from filled shapes and
 so does the page. Same path, three times, each lifted a little more:
 
-| Layer | Fill | Lift |
+| Layer | Fill | Lift (viewBox units) |
 |---|---|---|
-| `.ribbon__gold` | gold, alpha-ramped | `--ribbon-gold-lift` |
-| `.ribbon__mid` | `--qp-sand-deep` | half that — **hero sweep only** |
+| `.ribbon__tan` | `--qp-gold-pale`, solid | `--ribbon-gold` + `--ribbon-tan` |
+| `.ribbon__gold` | `--qp-gold`, solid | `--ribbon-gold` |
 | `.ribbon__fill` | the incoming ground | none |
 
-The cover stacks three this way; only the hero sweep runs at cover scale, so only
-it has the room to read as three rather than as a thickened edge.
-
-**The gradient.** The cover's two gold shadings are *alpha* ramps over a flat
-gold, not colour ramps — `#D6AD7E→#D8B07E` is effectively one colour — and their
-axes run opposite ways, `(252,39)→(56,124)` against `(431,52)→(560,89)`. Here the
-ramp is anchored to the curve's deep end; since consecutive dividers alternate
-sides (`--flip`, mirroring the SVG), consecutive ramps reverse for free.
+Every divider carries all three, as the cover does — ground, gold band, tan band —
+with solid fills; the bands are what make the curve read as layered colour rather
+than as an edge. The hero sweep runs at cover scale (up to 270px) and carries the
+ministry mark in its deep end, where the cover places it.
 
 **The overlap.** A divider is pulled up over the section above it by its own
 height and paints no ground of its own. That is what lets the hero photograph run

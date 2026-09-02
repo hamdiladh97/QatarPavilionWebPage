@@ -47,12 +47,10 @@
      1440x100 viewBox (the vertical squash is what lets a 419pt page device
      work as a ~100px divider).
 
-     Two filled shapes, never a stroke — that is how the brochure builds it:
-     the incoming ground in front, the same path in gold behind it, lifted so
-     a thin gold edge shows along the whole run and widens where the sweep
-     deepens. The gold carries an alpha ramp anchored to the deep end; since
-     consecutive dividers alternate sides, consecutive ramps run in opposite
-     directions, as the cover's two shadings do.
+     Three filled shapes, never a stroke — that is how the cover builds it:
+     the incoming ground in front, the same path in solid gold behind it,
+     and again in tan behind that, each lifted so a band shows along the
+     whole run. The lifts are set in CSS (--ribbon-gold, --ribbon-tan).
 
      `to` is the ground of the section below. Nothing paints the section
      above — the divider is transparent there, so whatever is up there
@@ -75,32 +73,29 @@
        the start point and the band tapers to nothing at the right edge. */
     " C18.8,5.5 8.9,2.8 0,0 L0,100 L1440,100 L1440,88 Z";
 
-  var ribbonSeq = 0;
-
   function ribbon(to, flip, hero) {
-    var id = "rib-gold-" + ribbonSeq++;
     return '<div class="ribbon' + (flip ? " ribbon--flip" : "") +
       (hero ? " ribbon--hero" : "") + '" aria-hidden="true"' +
       ' style="--ribbon-to:' + to + '">' +
       '<svg viewBox="0 0 1440 100" preserveAspectRatio="none" focusable="false">' +
-      '<linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="0">' +
-        '<stop offset="0" stop-color="var(--qp-gold-lit)" stop-opacity="1"/>' +
-        '<stop offset="0.55" stop-color="var(--qp-gold)" stop-opacity="0.82"/>' +
-        '<stop offset="1" stop-color="var(--qp-gold)" stop-opacity="var(--ribbon-gold-fade)"/>' +
-      "</linearGradient>" +
-      '<path class="ribbon__gold" fill="url(#' + id + ')" d="' + SWEEP + '"/>' +
-      /* the cover stacks three: gold at the back, a tan band over it, the
-         ground in front. Only the hero sweep is at cover scale, so only it
-         has the room to read as three rather than as a thickened edge.  */
-      (hero ? '<path class="ribbon__mid" d="' + SWEEP + '"/>' : "") +
+      '<path class="ribbon__tan" d="' + SWEEP + '"/>' +
+      '<path class="ribbon__gold" d="' + SWEEP + '"/>' +
       '<path class="ribbon__fill" d="' + SWEEP + '"/>' +
-      "</svg></div>";
+      "</svg>" +
+      /* the cover carries the ministry mark in the sweep's deep end */
+      (hero ? '<img class="ribbon__badge" src="assets/img/logos/mecc-white.png" alt="">' : "") +
+      "</div>";
   }
 
   /* ------------------------------------------------------------- render */
   function renderNav() {
     return '<header class="nav" id="nav"><div class="container nav__inner">' +
       '<a class="nav__brand" href="#top" aria-label="Qatar Pavilion at COP31 — back to top">' +
+        /* the cover's dark marks over ivory; the white lockup once stuck */
+        '<span class="nav__marks">' +
+          '<img src="assets/img/logos/pavilion-dark.png" alt="Qatar Pavilion">' +
+          '<img src="assets/img/logos/cop31-dark.png" alt="COP31 Türkiye">' +
+        "</span>" +
         '<img class="nav__logo" src="assets/img/logos/lockup-white.png" alt="Qatar Pavilion and COP31 Türkiye">' +
       "</a>" +
       '<button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">' +
@@ -119,20 +114,21 @@
       '<div class="hero__media"><img src="assets/img/scenes/hero.jpg" alt="" aria-hidden="true"></div>' +
       '<div class="hero__scrim" aria-hidden="true"></div>' +
       '<div class="container"><div class="hero__inner">' +
-        '<p class="eyebrow" data-reveal>' + esc(m.eyebrow) + " &middot; " + esc(m.location) + "</p>" +
-        '<h1 class="hero__title" data-reveal style="--reveal-delay:90ms">' +
-          "<span>Qatar Pavilion</span><span class=\"is-gold\">at COP31</span>" +
+        /* the cover's title block, in its order: maroon capitals, ink line,
+           light subtitle, gold rule, date and place in maroon */
+        '<h1 class="hero__title" data-reveal>' +
+          '<span class="is-brand">Qatar Pavilion</span><span>at ' + esc(m.eyebrow) + "</span>" +
         "</h1>" +
-        '<p class="hero__sub" data-reveal style="--reveal-delay:180ms">' + esc(m.subtitle) + "</p>" +
-        '<div class="hero__rule" data-reveal style="--reveal-delay:240ms" aria-hidden="true"><span>&#9670;</span></div>' +
-        '<p class="hero__tagline" data-reveal style="--reveal-delay:300ms">' + esc(m.tagline) + "</p>" +
-        '<ul class="hero__meta" data-reveal style="--reveal-delay:360ms">' +
+        '<p class="hero__sub" data-reveal style="--reveal-delay:90ms">' + esc(m.subtitle) + "</p>" +
+        '<div class="hero__rule" data-reveal style="--reveal-delay:180ms" aria-hidden="true"><span>&#9670;</span></div>' +
+        '<ul class="hero__meta" data-reveal style="--reveal-delay:240ms">' +
           "<li>" + ICON.cal + "<span>" + esc(m.dates) + "</span></li>" +
           "<li>" + ICON.pin + "<span>" + esc(m.location) + "</span></li>" +
         "</ul>" +
-        '<div class="hero__actions" data-reveal style="--reveal-delay:420ms">' +
+        '<p class="hero__tagline" data-reveal style="--reveal-delay:300ms">' + esc(m.tagline) + "</p>" +
+        '<div class="hero__actions" data-reveal style="--reveal-delay:360ms">' +
           '<a class="btn btn--gold" href="' + esc(h.ctaPrimary.href) + '">' + esc(h.ctaPrimary.label) + "</a>" +
-          '<a class="btn btn--ghost" href="' + esc(h.ctaSecondary.href) + '">' + esc(h.ctaSecondary.label) + "</a>" +
+          '<a class="btn btn--outline" href="' + esc(h.ctaSecondary.href) + '">' + esc(h.ctaSecondary.label) + "</a>" +
         "</div>" +
         '<div class="countdown" data-reveal style="--reveal-delay:500ms" id="countdown"></div>' +
       "</div></div></section>";
@@ -140,11 +136,13 @@
 
   function renderPavilion() {
     var p = C.pavilion;
-    return '<section class="section section--ivory" id="pavilion"><div class="container">' +
+    return '<section class="section section--brand" id="pavilion"><div class="container">' +
       '<div class="pavilion__grid">' +
-        '<div class="pavilion__map" data-reveal>' +
-          '<img src="assets/img/scenes/qatar-map.png" alt="The outline of Qatar filled with a view of the Doha skyline above desert dunes">' +
-        "</div>" +
+        /* the brochure's device: a photograph inside the outline of Qatar.
+           The outline is a CSS mask, so swapping the photo is a file change. */
+        '<div class="pavilion__map" data-reveal><div class="pavilion__map-shape">' +
+          '<img src="assets/img/scenes/doha-corniche.jpg" alt="The outline of Qatar filled with the Doha West Bay skyline at dusk, a dhow crossing the bay in front of it">' +
+        "</div></div>" +
         '<div class="pavilion__body">' +
           '<div class="section__head" data-reveal>' +
             '<p class="eyebrow">' + esc(p.eyebrow) + "</p>" +
@@ -192,7 +190,7 @@
             '<img src="' + esc(ev.image) + '" alt="' + esc(ev.imageAlt) + '" loading="lazy">' +
           "</figure>" +
           "<div>" +
-            '<p class="panel__no">Side-Event ' + esc(ev.no) + "</p>" +
+            '<p class="eyebrow panel__no">Side-Event ' + esc(ev.no) + "</p>" +
             '<h3 class="panel__title">' + esc(ev.title) + "</h3>" +
             '<span class="chip">Theme: ' + esc(ev.theme) + "</span>" +
             '<ul class="panel__when">' +
@@ -202,7 +200,7 @@
             "</ul>" +
             '<p class="panel__desc">' + esc(ev.description) + "</p>" +
 
-            '<h4 class="panel__sub">Agenda</h4>' +
+            '<h4 class="eyebrow panel__sub">Agenda</h4>' +
             '<ul class="agenda">' +
               p.agenda.map(function (a) {
                 return "<li><span>" + esc(a.item) + "</span><span>" + esc(a.duration) + "</span></li>";
@@ -212,7 +210,7 @@
         "</div>" +
 
         /* speakers get the full panel width so all four sit on one row */
-        '<h4 class="panel__sub">Speakers</h4>' +
+        '<h4 class="eyebrow panel__sub">Speakers</h4>' +
         '<ul class="speakers">' +
           ev.speakers.map(function (s) {
             return '<li class="speaker">' +
@@ -226,7 +224,7 @@
         "</div>";
     }).join("");
 
-    return '<section class="section section--brand" id="programme"><div class="container">' +
+    return '<section class="section section--ivory" id="programme"><div class="container">' +
       '<div class="section__head" data-reveal>' +
         '<p class="eyebrow">' + esc(p.eyebrow) + "</p>" +
         '<h2 class="section__title">' + esc(p.heading) + "</h2>" +
@@ -239,7 +237,7 @@
 
   function renderHighlights() {
     var h = C.highlights;
-    return '<section class="section section--sand" id="qatar-mecc"><div class="container">' +
+    return '<section class="section section--brand" id="qatar-mecc"><div class="container">' +
       '<div class="section__head" data-reveal>' +
         '<p class="eyebrow">' + esc(h.eyebrow) + "</p>" +
         '<h2 class="section__title">' + esc(h.heading) + "</h2>" +
@@ -247,7 +245,9 @@
       "</div>" +
       '<div class="stats">' +
         h.groups.map(function (g, i) {
-          return '<article class="stat-card' + (g.wide ? " stat-card--wide" : "") + '"' +
+          /* the brochure alternates gold-outlined and ivory cards */
+          return '<article class="stat-card ' + (i % 2 ? "stat-card--ivory" : "stat-card--outline") +
+            (g.wide ? " stat-card--wide" : "") + '"' +
             ' data-reveal style="--reveal-delay:' + (i * 70) + 'ms">' +
             '<h3 class="stat-card__title">' + esc(g.title) + "</h3>" +
             '<div class="stat-card__list">' +
@@ -323,9 +323,13 @@
   function renderFooter() {
     var f = C.footer, c = f.contact;
     return '<footer class="footer" id="contact"><div class="container">' +
+      /* the back cover: lockup, the ministry's line in gold capitals */
+      '<div class="footer__tagline" data-reveal>' +
+        '<img src="assets/img/logos/lockup-white.png" alt="">' +
+        "<p>" + esc(C.meta.tagline) + "</p>" +
+      "</div>" +
       '<div class="footer__top">' +
         '<div class="footer__logos">' +
-          '<img src="assets/img/logos/lockup-white.png" alt="Qatar Pavilion and COP31 Türkiye">' +
           '<img src="assets/img/logos/mecc-white.png" alt="Ministry of Environment and Climate Change, State of Qatar" style="max-width:150px">' +
         "</div>" +
         '<div class="footer__cols">' +
@@ -356,11 +360,10 @@
   }
 
   /* --------------------------------------------------------- compose page */
-  /* Grounds follow the brochure: it has sixteen pages and not one of them is
-     a maroon field — every page is ivory or sand, alternating, with maroon
-     reserved for the corner device, image containers and type. Programme
-     keeps a maroon ground as the page's single dark chapter; everything
-     between it and the footer alternates ivory/sand as the brochure does. */
+  /* Grounds follow the brochure page for page: ivory cover, maroon welcome
+     page, ivory side-event pages, maroon highlights, then back to light
+     grounds, closing on the deep maroon back cover. The sweep alternates
+     sides between every pair, as the brochure's corner device does.     */
   var IVORY = "var(--surface-ivory)", SAND = "var(--surface-sand)", BRAND = "var(--surface-brand)",
       DEEP  = "var(--surface-brand-deep)";
 
@@ -368,11 +371,11 @@
     renderNav() +
     '<main id="main">' +
       renderHero() +
-      ribbon(IVORY, false, true) +
+      ribbon(BRAND, false, true) +
       renderPavilion() +
-      ribbon(BRAND, true) +
+      ribbon(IVORY, true) +
       renderProgramme() +
-      ribbon(SAND, false) +
+      ribbon(BRAND, false) +
       renderHighlights() +
       ribbon(IVORY, true) +
       renderMecc() +

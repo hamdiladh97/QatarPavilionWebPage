@@ -2,15 +2,12 @@
    QATAR PAVILION AT COP31 — DESIGN SYSTEM
    --------------------------------------------------------------------------
    Every value below is derived from the official COP31 Qatar Pavilion
-   Side-Events Brochure (Adobe Illustrator source), measured rather than
-   estimated: colours are area-weighted vector fills, type is the embedded
+   Side-Events Brochure: colours are its vector fills, type is its embedded
    font programme, proportions follow the 595x420pt page grid.
 
    Layer 1  PRIMITIVES  raw brand values — never referenced directly in UI
    Layer 2  SEMANTIC    role-based aliases — this is what components use
    Layer 3  COMPONENT   per-component overrides
-
-   Change a brand value once in Layer 1 and it propagates everywhere.
    ========================================================================== */
 
 :root {
@@ -19,85 +16,85 @@
      ====================================================================== */
 
   /* --- Colour ---------------------------------------------------------
-     Sampled from the brochure's vector fills, ranked by painted area.
-     Qatar Maroon is the national colour and carries the most surface.   */
+     The brochure alternates two grounds: full-bleed Qatar maroon (welcome,
+     highlights, strategy, calendar, back cover) and warm ivory (cover, the
+     five side-event pages, speakers). Gold is the band on every curve.  */
 
-  --qp-maroon:        #8A1539;   /* primary ground — 596k units of fill  */
-  --qp-maroon-deep:   #6B0F2C;   /* footer, pressed states               */
-  --qp-maroon-soft:   #A32A4C;   /* hover lift on maroon surfaces        */
+  --qp-maroon:        #8A1539;   /* primary ground                        */
+  --qp-maroon-deep:   #6B0F2C;   /* footer, pressed states                */
+  --qp-maroon-soft:   #A32A4C;   /* hover lift on maroon surfaces         */
 
-  --qp-ivory:         #FFF8F0;   /* warm ground — 1.82M units            */
-  --qp-sand:          #F7EDE2;   /* secondary ground — 1.75M units       */
-  --qp-sand-deep:     #EDD5BC;   /* tint blocks, rules on ivory          */
+  --qp-ivory:         #FFF8F0;   /* warm ground                           */
+  --qp-sand:          #F7EDE2;   /* secondary ground                      */
+  --qp-sand-deep:     #EDD5BC;   /* tint blocks, rules on ivory           */
 
-  --qp-gold:          #CE9F63;   /* the signature accent — 167k units    */
-  --qp-gold-deep:     #C49453;   /* rules, underlines, pressed gold      */
-  --qp-gold-pale:     #E4C79B;   /* gold text on maroon (AA at 16px)     */
-  --qp-gold-ink:      #8C6829;   /* gold dark enough to be TEXT on a light
-                                    ground — 5.1:1 on white. The brochure
-                                    never needs it: on paper its gold is a
-                                    filled bar with type reversed out.   */
-  --qp-gold-lit:      #D7AF7E;   /* the cover's gradient gold — the two
-                                    axial shadings ramp this colour's
-                                    alpha, not its hue                   */
+  --qp-gold:          #CE9F63;   /* the signature accent — bands, rules   */
+  --qp-gold-deep:     #C49453;   /* pressed gold                          */
+  --qp-gold-pale:     #E4C79B;   /* gold text on maroon; the cover's tan
+                                    band that sits outside the gold one  */
+  --qp-gold-ink:      #8C6829;   /* gold dark enough to be TEXT on ivory
+                                    — 5.1:1. The brochure never needs it:
+                                    on paper gold is a filled bar with
+                                    type reversed out of it.             */
 
-  --qp-petrol:        #0C4261;   /* theme chips, icon diamonds           */
+  --qp-petrol:        #0C4261;   /* theme chips, icon diamonds            */
   --qp-petrol-soft:   #1B5B80;
 
-  --qp-ink:           #1D1D1B;   /* body text on ivory — never pure black */
+  --qp-ink:           #1D1D1B;   /* text on ivory — never pure black      */
   --qp-ink-soft:      #4A4A46;
   --qp-white:         #FFFFFF;
 
   /* --- Typography ------------------------------------------------------
-     The brochure is set entirely in Cormorant Light. That works on paper
-     at 4.7-8pt, but a Light high-contrast serif fails legibility and
-     WCAG contrast at screen body sizes — especially reversed on maroon.
-     So: Cormorant keeps every display role (its natural register, full
-     brand fidelity), and IBM Plex Sans carries anything under ~18px —
-     labels, times, agenda rows, nav, buttons, captions.               */
+     One family, as the brochure: Cormorant carries everything that is
+     read. Its hierarchy is weight contrast — Bold titles, kickers, names
+     and numerals against a light body — plus colour (maroon / ink / gold /
+     white). On paper the body is Light at 8-11pt; on screen that goes
+     hairline, so body copy is Medium at 20px. IBM Plex Sans is kept for
+     the few labels under ~14px (status pills, tags, legal, unit labels),
+     where any high-contrast serif breaks up.                            */
 
-  --qp-font-display: "Cormorant", "Cormorant Garamond", "Times New Roman", serif;
+  --qp-font-display: "Cormorant", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --qp-font-body:    var(--qp-font-display);
   --qp-font-ui:      "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  --qp-weight-light:    300;   /* the brochure's only display weight     */
+  --qp-weight-light:    300;
   --qp-weight-regular:  400;
   --qp-weight-medium:   500;
   --qp-weight-semibold: 600;
+  --qp-weight-bold:     700;
 
-  /* Display pairing. The brochure is 100% Cormorant Light — verified from
-     its nine embedded subsets, every one FontWeight 300. That holds at
-     display scale and collapses below it: Light's hairlines thin out under
-     ~2rem and vanish in numerals. So the split is by optical size, not by
-     role — Light carries the voice, SemiBold carries the mid-scale.     */
-  --qp-display-light: var(--qp-weight-light);      /* >= ~2.2rem          */
-  --qp-display-bold:  var(--qp-weight-semibold);   /* <  ~2.2rem, + digits */
+  --qp-display-bold:  var(--qp-weight-bold);     /* titles, kickers, names, digits */
+  --qp-display-light: var(--qp-weight-regular);  /* the one light display role:
+                                                    the cover's subtitle line   */
+  --qp-weight-body:   var(--qp-weight-medium);
 
-  /* Fluid scale. Ratios follow the brochure's 27.5 / 20 / 11 / 8 / 6.2 pt
-     relationships (~1.25-1.3), re-anchored for screen reading distance. */
-  --qp-size-display-xl: clamp(3rem,    1.6rem + 6.4vw, 6.5rem);
-  --qp-size-display-lg: clamp(2.25rem, 1.5rem + 3.2vw, 3.75rem);
-  --qp-size-display-md: clamp(1.6rem,  1.2rem + 1.8vw, 2.5rem);
-  --qp-size-display-sm: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  /* Fluid scale. Ratios follow the brochure's 41 / 27 / 20 / 11 pt steps. */
+  --qp-size-display-xl: clamp(3.1rem,  1.7rem + 6.2vw, 6.25rem);
+  --qp-size-display-lg: clamp(2.5rem,  1.7rem + 3.4vw, 4rem);
+  --qp-size-display-md: clamp(1.8rem,  1.35rem + 1.9vw, 2.75rem);
+  --qp-size-display-sm: clamp(1.4rem,  1.2rem + 0.8vw, 1.75rem);
+  --qp-size-kicker:     clamp(1.4rem,  1.2rem + 0.8vw, 1.75rem);
 
-  --qp-size-body-lg:  1.1875rem;
-  --qp-size-body:     1rem;
-  --qp-size-body-sm:  0.9375rem;
+  /* Cormorant body sizes — set larger than a sans would be */
+  --qp-size-body-lg:  1.375rem;
+  --qp-size-body:     1.25rem;
+  --qp-size-body-sm:  1.125rem;
+  /* Plex Sans UI sizes */
+  --qp-size-ui:       0.875rem;
   --qp-size-caption:  0.8125rem;
   --qp-size-micro:    0.6875rem;
 
-  --qp-leading-tight:  1.08;   /* display */
-  --qp-leading-snug:   1.28;
-  --qp-leading-normal: 1.55;
-  --qp-leading-relaxed:1.72;   /* long-form body on maroon */
+  --qp-leading-tight:  1.04;   /* display */
+  --qp-leading-snug:   1.22;
+  --qp-leading-normal: 1.5;
+  --qp-leading-relaxed:1.62;   /* long-form body on maroon */
 
-  --qp-tracking-display: -0.015em;
+  --qp-tracking-display: -0.005em;
   --qp-tracking-normal:  0;
   --qp-tracking-wide:    0.08em;
-  --qp-tracking-eyebrow: 0.22em;   /* the brochure's small-caps labels */
+  --qp-tracking-caps:    0.04em;   /* bold Cormorant capitals (cover title) */
 
-  /* --- Space -----------------------------------------------------------
-     4px base. Section rhythm is deliberately generous: the brochure runs
-     ~11% page-width margins, which is what --space-3xl approximates.   */
+  /* --- Space ----------------------------------------------------------- */
   --qp-space-3xs: 0.25rem;
   --qp-space-2xs: 0.5rem;
   --qp-space-xs:  0.75rem;
@@ -111,29 +108,25 @@
 
   --qp-section-y: clamp(4rem, 9vw, 8.5rem);
   --qp-gutter:    clamp(1.25rem, 4vw, 4rem);
-  --qp-measure:   68ch;      /* max line length for body copy */
+  --qp-measure:   62ch;
   --qp-container: 1280px;
 
-  /* --- Shape -----------------------------------------------------------
-     The brochure rounds cards gently and makes portraits full circles.
-     MECC's own site uses 50px pill buttons — carried over.             */
+  /* --- Shape ----------------------------------------------------------- */
   --qp-radius-sm:   4px;
-  --qp-radius-md:   8px;
-  --qp-radius-lg:   14px;
+  --qp-radius-md:   10px;
+  --qp-radius-lg:   16px;
   --qp-radius-pill: 999px;
   --qp-radius-full: 50%;
 
   --qp-rule:       1px;
-  --qp-rule-thick: 2px;
+  --qp-rule-thick: 3px;
 
-  /* --- Elevation -------------------------------------------------------
-     Print has no shadows; these stay near-invisible and warm-tinted.   */
+  /* --- Elevation ------------------------------------------------------- */
   --qp-shadow-sm: 0 1px 2px rgba(29, 29, 27, 0.06);
-  --qp-shadow-md: 0 6px 20px -8px rgba(29, 29, 27, 0.18);
-  --qp-shadow-lg: 0 24px 60px -24px rgba(107, 15, 44, 0.34);
+  --qp-shadow-md: 0 8px 24px -10px rgba(29, 29, 27, 0.22);
+  --qp-shadow-lg: 0 28px 64px -26px rgba(107, 15, 44, 0.42);
 
-  /* --- Motion ----------------------------------------------------------
-     One easing curve for everything, so the page feels of a piece.     */
+  /* --- Motion ---------------------------------------------------------- */
   --qp-ease:      cubic-bezier(0.16, 1, 0.30, 1);
   --qp-ease-in:   cubic-bezier(0.55, 0, 0.45, 1);
   --qp-dur-fast:  160ms;
@@ -148,8 +141,6 @@
 
   /* ======================================================================
      LAYER 2 — SEMANTIC
-     Components reference only these. Swapping a brand colour above
-     re-themes the whole page without touching a single component rule.
      ====================================================================== */
 
   /* Surfaces */
@@ -158,27 +149,25 @@
   --surface-brand:      var(--qp-maroon);
   --surface-brand-deep: var(--qp-maroon-deep);
   --surface-card:       var(--qp-white);
-  --surface-card-brand: rgba(255, 248, 240, 0.10);
 
   /* Text on light grounds */
   --text-primary:   var(--qp-ink);
   --text-secondary: var(--qp-ink-soft);
   --text-accent:    var(--qp-maroon);
+  --text-gold:      var(--qp-gold-ink);
 
   /* Text on maroon grounds */
   --text-on-brand:           var(--qp-ivory);
-  --text-on-brand-secondary: rgba(255, 248, 240, 0.87);
+  --text-on-brand-secondary: rgba(255, 248, 240, 0.94);
   --text-on-brand-accent:    var(--qp-gold-pale);
 
   /* Lines */
-  --line-on-light: rgba(29, 29, 27, 0.14);
-  --line-on-brand: rgba(255, 248, 240, 0.28);
+  --line-on-light: rgba(29, 29, 27, 0.16);
+  --line-on-brand: rgba(255, 248, 240, 0.3);
   --line-gold:     var(--qp-gold);
 
   /* Interactive */
   --accent:         var(--qp-gold);
-  --accent-strong:  var(--qp-gold-deep);   /* graphics only — fails as text */
-  --text-gold:      var(--qp-gold-ink);    /* gold type on ivory/sand/white */
   --focus-ring:     var(--qp-gold);
   --focus-offset:   3px;
 
@@ -192,43 +181,38 @@
    ========================================================================== */
 :root {
   /* Sticky masthead */
-  --nav-h:          72px;
-  --nav-h-compact:  60px;
-  --nav-bg:         rgba(138, 21, 57, 0.94);
+  --nav-h:          76px;
+  --nav-h-compact:  62px;
+  --nav-bg:         rgba(138, 21, 57, 0.96);
   --nav-blur:       14px;
 
-  /* Buttons — the pill geometry is inherited from mecc.gov.qa */
-  --btn-pad-y:      0.85rem;
-  --btn-pad-x:      2.1rem;
+  /* Buttons — pill geometry from mecc.gov.qa, type from the brochure */
+  --btn-pad-y:      0.7rem;
+  --btn-pad-x:      1.9rem;
   --btn-radius:     var(--qp-radius-pill);
-  --btn-font:       var(--qp-font-ui);
-  --btn-size:       var(--qp-size-body-sm);
-  --btn-tracking:   0.06em;
+  --btn-font:       var(--qp-font-display);
+  --btn-size:       1.15rem;
+  --btn-weight:     var(--qp-weight-bold);
+  --btn-tracking:   0.015em;
 
-  /* Speaker portraits — full circle inside a gold ring, as in the brochure */
-  --portrait-size:      132px;
+  /* Speaker portraits — full circle inside a ring, as in the brochure:
+     maroon ring on ivory pages, gold ring on maroon ones */
+  --portrait-size:      136px;
   --portrait-size-sm:   104px;
   --portrait-ring:      2px;
-  --portrait-ring-color:var(--qp-gold);
+  --portrait-ring-color:var(--qp-maroon);
 
-  /* The sweep that separates every section — the page's signature.
-     Geometry is the brochure cover's bottom sweep, lifted from the PDF's
-     own vector path: one monotonic curve, flat at the shallow edge,
-     rising to 37.8% of page height at the deep edge. No inflections.
-
-     It is built from two filled shapes, never a stroke: the incoming
-     ground in front, gold behind, the gold lifted just enough to show a
-     thin edge along the whole run. --ribbon-gold-lift is in viewBox
-     units (the viewBox is 100 tall) so it reads as a percentage of the
-     divider's height — ~8% here, against the brochure's 0.5% of page
-     height, opened up for screen viewing distance.                     */
-  --ribbon-h:           clamp(52px, 6.5vw, 108px);
-  --ribbon-h-hero:      clamp(88px, 12vw, 186px);
-  --ribbon-gold-lift:   8px;    /* viewBox units, not CSS px */
-  --ribbon-gold-fade:   0.30;   /* far-end alpha of the gold ramp */
+  /* The sweep between sections — the brochure's corner device.
+     Three filled shapes, never a stroke, exactly as the cover stacks them:
+     the incoming ground in front, a solid gold band behind it, a tan band
+     behind that. Lifts are in viewBox units (the viewBox is 100 tall), so
+     they read as a share of the divider's height.                       */
+  --ribbon-h:           clamp(64px, 8.5vw, 140px);
+  --ribbon-h-hero:      clamp(120px, 18vw, 270px);
+  --ribbon-gold:        11;     /* gold band, viewBox units              */
+  --ribbon-tan:         8;      /* tan band beyond it                    */
 
   /* Programme date rail */
-  --rail-dot:        11px;
   --rail-gap:        var(--qp-space-md);
 }
 

@@ -17,10 +17,11 @@ html {
 body {
   background: var(--surface-ivory);
   color: var(--text-primary);
-  font-family: var(--qp-font-ui);
+  font-family: var(--qp-font-body);
+  font-weight: var(--qp-weight-body);
   font-size: var(--qp-size-body);
   line-height: var(--qp-leading-normal);
-  -webkit-font-smoothing: antialiased;
+  /* no grayscale antialiasing override: it thins a serif's hairlines */
   overflow-x: hidden;
 }
 
@@ -29,6 +30,8 @@ img { height: auto; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 a { color: inherit; }
 ul, ol { list-style: none; padding: 0; }
+h1, h2, h3, h4 { text-wrap: balance; }
+p { text-wrap: pretty; }
 
 :focus-visible {
   outline: var(--qp-rule-thick) solid var(--focus-ring);
@@ -49,52 +52,52 @@ ul, ol { list-style: none; padding: 0; }
   background: var(--surface-ivory); color: var(--text-accent);
   padding: var(--qp-space-xs) var(--qp-space-md);
   border-radius: 0 0 var(--qp-radius-md) var(--qp-radius-md);
-  font-size: var(--qp-size-body-sm); font-weight: var(--qp-weight-semibold);
+  font-weight: var(--qp-weight-bold);
   transition: transform var(--qp-dur-fast) var(--qp-ease);
 }
 .skip-link:focus { transform: translate(-50%, 0); }
 
 /* ---------------------------------------------------------- 2. Typography */
-.display {
-  font-family: var(--qp-font-display);
-  font-weight: var(--qp-weight-light);
-  line-height: var(--qp-leading-tight);
-  letter-spacing: var(--qp-tracking-display);
-}
-
+/* The brochure's kicker: "◆ Side-Event 1", "◆ Agenda", "◆ Speakers" — bold
+   Cormorant with a gold diamond, sentence case, no tracking.            */
 .eyebrow {
-  display: inline-flex; align-items: center; gap: var(--qp-space-2xs);
-  font-family: var(--qp-font-ui);
-  font-size: var(--qp-size-micro);
-  font-weight: var(--qp-weight-semibold);
-  letter-spacing: var(--qp-tracking-eyebrow);
-  text-transform: uppercase;
+  display: flex; align-items: center; gap: var(--qp-space-2xs);
+  font-family: var(--qp-font-display);
+  font-size: var(--qp-size-kicker);
+  font-weight: var(--qp-display-bold);
+  line-height: 1.2;
 }
-.eyebrow::before { content: "\25C6"; font-size: 0.72em; color: var(--accent); }
+/* drawn, not typed: Cormorant has no diamond glyph and the fallback is a dot */
+.eyebrow::before {
+  content: ""; flex: none;
+  width: 0.48em; height: 0.48em;
+  margin-inline: 0.05em 0.1em;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
 
 .section__head { max-width: var(--qp-measure); margin-bottom: var(--qp-space-2xl); }
 .section__title {
   font-family: var(--qp-font-display);
-  font-weight: var(--qp-weight-light);
+  font-weight: var(--qp-display-bold);
   font-size: var(--qp-size-display-lg);
   line-height: var(--qp-leading-tight);
   letter-spacing: var(--qp-tracking-display);
   margin-top: var(--qp-space-xs);
 }
-/* The brochure's heading accent is a filled gold bar — measured at 16pt on a
-   419pt page — not a hairline. Scaled down for a rule under a heading, but
-   kept as a shape with an alpha ramp rather than a 2px line.            */
+/* The brochure's heading rule: a thick gold bar running into a thin line */
 .section__title::after {
   content: ""; display: block;
-  width: 104px; height: 6px;
+  width: 168px; height: 6px;
   margin-top: var(--qp-space-md);
-  border-radius: 1px;
-  background: linear-gradient(90deg, var(--qp-gold-lit), var(--accent) 46%, rgba(206, 159, 99, 0.28));
+  background:
+    linear-gradient(var(--accent), var(--accent)) 0 0 / 42% 100% no-repeat,
+    linear-gradient(var(--accent), var(--accent)) 0 50% / 100% 1px no-repeat;
 }
 .section__intro {
   margin-top: var(--qp-space-md);
   font-size: var(--qp-size-body-lg);
-  max-width: 60ch;
+  max-width: 58ch;
 }
 
 /* ------------------------------------------------------- 3. Layout shells */
@@ -110,36 +113,29 @@ ul, ol { list-style: none; padding: 0; }
 
 .section--ivory { background: var(--surface-ivory); color: var(--text-primary); }
 .section--sand  { background: var(--surface-sand);  color: var(--text-primary); }
-/* Flat maroon reads dead over a full section. The brochure never has to
-   solve this — it has no maroon pages — so the depth comes from a single
-   soft lift at the top-left, in maroon-soft, the same hue family.      */
-.section--brand {
-  background:
-    radial-gradient(115% 78% at 12% -6%, rgba(163, 42, 76, 0.42), transparent 58%),
-    var(--surface-brand);
-  color: var(--text-on-brand);
-}
+/* Flat, as the brochure's maroon pages are. Any gradient here would show as
+   a band against the sweep above it, which is filled with the same flat
+   colour. */
+.section--brand { background: var(--surface-brand); color: var(--text-on-brand); }
 
-/* the hero is a brand ground but not a .section, so it needs naming here —
-   without it the eyebrow inherits body ink and sits at 1.8:1 on maroon */
-.hero .eyebrow,
-.section--brand .eyebrow      { color: var(--text-on-brand-accent); }
-.section--brand .section__intro { color: var(--text-on-brand-secondary); }
+/* colour by ground: ink titles + maroon kickers on light pages, white on
+   maroon — the brochure's own rule (side-event pages vs welcome page) */
 .section--ivory .eyebrow,
-.section--sand  .eyebrow      { color: var(--text-accent); }
+.section--sand  .eyebrow            { color: var(--text-accent); }
+.section--ivory .section__title,
+.section--sand  .section__title     { color: var(--text-primary); }
 .section--ivory .section__intro,
-.section--sand  .section__intro { color: var(--text-secondary); }
+.section--sand  .section__intro     { color: var(--text-secondary); }
+.section--brand .eyebrow,
+.section--brand .section__title     { color: var(--text-on-brand); }
+.section--brand .section__intro     { color: var(--text-on-brand-secondary); }
 
 /* --- The signature: the brochure's sweep between every section -----------
-   The divider is pulled up over the section above it by its own height and
-   paints no ground of its own, so the section above shows through wherever
-   the curve does not reach — which is what lets the hero photograph run all
-   the way down and be cut by the curve instead of stopping at a hard edge.
-
-   Two filled shapes. The gold sits behind, lifted --ribbon-gold-lift viewBox
-   units, so a thin gold edge shows along the flat run and opens out where
-   the sweep deepens — the brochure's proportion (2pt of gold under a 52pt
-   band), opened up for screen. It lifts into place as the divider enters.  */
+   Pulled up over the section above by its own height; paints no ground of
+   its own, so the section above shows through wherever the curve does not
+   reach. Three filled shapes: tan at the back, gold in front of it, the
+   incoming ground in front of both — the cover's exact stack. The bands
+   lift into place as the divider enters.                                 */
 .ribbon {
   position: relative;
   z-index: 1;
@@ -147,32 +143,40 @@ ul, ol { list-style: none; padding: 0; }
   margin-top: calc(var(--ribbon-h) * -1);
   pointer-events: none;
 }
-.ribbon svg { width: 100%; height: var(--ribbon-h); display: block; overflow: visible; }
+/* two extra pixels run under the next section so a fractional height can
+   never leave a hairline of the section above showing at the join */
+.ribbon svg { width: 100%; height: calc(var(--ribbon-h) + 2px); margin-bottom: -2px; display: block; overflow: visible; }
 .ribbon__fill { fill: var(--ribbon-to); }
-.ribbon__gold {
+.ribbon__gold { fill: var(--qp-gold); }
+.ribbon__tan  { fill: var(--qp-gold-pale); }
+.ribbon__gold, .ribbon__tan {
   transform: translateY(0);
   transition: transform 1.15s var(--qp-ease);
 }
-.ribbon__mid {
-  fill: var(--qp-sand-deep);
-  transform: translateY(0);
-  transition: transform 1.15s var(--qp-ease) 90ms;
-}
-.ribbon.is-visible .ribbon__gold { transform: translateY(calc(var(--ribbon-gold-lift) * -1)); }
-.ribbon.is-visible .ribbon__mid  { transform: translateY(calc(var(--ribbon-gold-lift) * -0.5)); }
+.ribbon__tan { transition-delay: 90ms; }
+.ribbon.is-visible .ribbon__gold { transform: translateY(calc(var(--ribbon-gold) * -1px)); }
+.ribbon.is-visible .ribbon__tan  { transform: translateY(calc((var(--ribbon-gold) + var(--ribbon-tan)) * -1px)); }
 @media (prefers-reduced-motion: reduce) {
-  .ribbon__gold { transform: translateY(calc(var(--ribbon-gold-lift) * -1)); transition: none; }
-  .ribbon__mid  { transform: translateY(calc(var(--ribbon-gold-lift) * -0.5)); transition: none; }
+  .ribbon__gold { transform: translateY(calc(var(--ribbon-gold) * -1px)); transition: none; }
+  .ribbon__tan  { transform: translateY(calc((var(--ribbon-gold) + var(--ribbon-tan)) * -1px)); transition: none; }
 }
-/* alternating sides, page to page, as the brochure alternates its corner
-   device — which also reverses the gold's alpha ramp on every other one */
+/* alternating sides, page to page, as the brochure alternates its corner */
 .ribbon--flip svg { transform: scaleX(-1); }
 
-/* the hero's sweep is the cover's, at cover scale — the lift carries two
-   bands here, tan then gold, so it is set wider than the section dividers' */
+/* the hero's sweep is the cover's, at cover scale, with the ministry mark
+   sitting in its deep end exactly where the cover carries it */
 .ribbon--hero {
   --ribbon-h: var(--ribbon-h-hero);
-  --ribbon-gold-lift: 9px;
+  --ribbon-gold: 9;
+  --ribbon-tan: 7;
+}
+.ribbon__badge {
+  position: absolute;
+  left: max(var(--qp-gutter), calc((100vw - var(--qp-container)) / 2 + var(--qp-gutter)));
+  bottom: 8%;
+  height: clamp(44px, 6.6vw, 98px);
+  width: auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
 }
 
 /* -------------------------------------------------------------- 4. Button */
@@ -180,11 +184,12 @@ ul, ol { list-style: none; padding: 0; }
   display: inline-flex; align-items: center; gap: var(--qp-space-2xs);
   font-family: var(--btn-font);
   font-size: var(--btn-size);
-  font-weight: var(--qp-weight-semibold);
+  font-weight: var(--btn-weight);
   letter-spacing: var(--btn-tracking);
+  line-height: 1.2;
   padding: var(--btn-pad-y) var(--btn-pad-x);
   border-radius: var(--btn-radius);
-  border: var(--qp-rule) solid transparent;
+  border: var(--qp-rule-thick) solid transparent;
   text-decoration: none;
   transition: background-color var(--qp-dur-base) var(--qp-ease),
               color var(--qp-dur-base) var(--qp-ease),
@@ -194,12 +199,15 @@ ul, ol { list-style: none; padding: 0; }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
 
-.btn--gold  { background: var(--accent); color: var(--qp-maroon-deep); }
-.btn--gold:hover { background: var(--qp-gold-pale); }
+/* the brochure's gold bar with maroon type */
+.btn--gold  { background: var(--accent); border-color: var(--accent); color: var(--qp-maroon-deep); }
+.btn--gold:hover { background: var(--qp-gold-pale); border-color: var(--qp-gold-pale); }
 
-.btn--ghost { border-color: var(--line-on-brand); color: var(--text-on-brand); }
-.btn--ghost:hover { border-color: var(--accent); color: var(--text-on-brand-accent); }
+/* on maroon */
+.btn--ghost { border-color: var(--text-on-brand); color: var(--text-on-brand); }
+.btn--ghost:hover { background: var(--text-on-brand); color: var(--text-accent); }
 
+/* on ivory */
 .btn--outline { border-color: var(--text-accent); color: var(--text-accent); }
 .btn--outline:hover { background: var(--surface-brand); color: var(--text-on-brand); border-color: var(--surface-brand); }
 
@@ -207,18 +215,23 @@ ul, ol { list-style: none; padding: 0; }
 .btn:hover .btn__arrow { transform: translateX(4px); }
 
 /* ----------------------------------------------------------------- 5. Nav */
+/* Over the ivory cover the masthead is the brochure's: dark marks, ink
+   links. Once it sticks it becomes a maroon bar with the white lockup. */
 .nav {
   position: fixed; inset-block-start: 0; inset-inline: 0;
   z-index: var(--qp-z-nav);
   height: var(--nav-h);
   display: flex; align-items: center;
+  color: var(--text-primary);
   background: transparent;
   transition: background-color var(--qp-dur-base) var(--qp-ease),
               height var(--qp-dur-base) var(--qp-ease),
+              color var(--qp-dur-base) var(--qp-ease),
               box-shadow var(--qp-dur-base) var(--qp-ease);
 }
 .nav.is-stuck {
   height: var(--nav-h-compact);
+  color: var(--text-on-brand);
   background: var(--nav-bg);
   backdrop-filter: blur(var(--nav-blur));
   -webkit-backdrop-filter: blur(var(--nav-blur));
@@ -226,20 +239,24 @@ ul, ol { list-style: none; padding: 0; }
 }
 .nav__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--qp-space-md); width: 100%; }
 .nav__brand { display: flex; align-items: center; gap: var(--qp-space-sm); text-decoration: none; }
-.nav__logo { height: 34px; width: auto; transition: height var(--qp-dur-base) var(--qp-ease); }
-.nav.is-stuck .nav__logo { height: 28px; }
+.nav__marks { display: flex; align-items: center; gap: var(--qp-space-sm); }
+.nav__marks img { height: 46px; width: auto; }
+.nav__marks img + img { border-left: var(--qp-rule) solid var(--line-on-light); padding-left: var(--qp-space-sm); }
+.nav__logo { height: 34px; width: auto; display: none; }
+.nav.is-stuck .nav__marks { display: none; }
+.nav.is-stuck .nav__logo { display: block; height: 28px; }
 
 .nav__links { display: flex; align-items: center; gap: var(--qp-space-lg); }
 .nav__link {
   position: relative;
-  font-size: var(--qp-size-caption);
-  font-weight: var(--qp-weight-medium);
-  letter-spacing: 0.04em;
-  color: var(--text-on-brand);
+  font-family: var(--qp-font-display);
+  font-size: 1.2rem;
+  font-weight: var(--qp-weight-bold);
+  line-height: 1;
+  color: inherit;
   text-decoration: none;
   padding-block: var(--qp-space-2xs);
-  opacity: 0.82;
-  transition: opacity var(--qp-dur-fast) var(--qp-ease);
+  transition: color var(--qp-dur-fast) var(--qp-ease);
 }
 .nav__link::after {
   content: ""; position: absolute; left: 0; bottom: 0;
@@ -248,25 +265,26 @@ ul, ol { list-style: none; padding: 0; }
   transform: scaleX(0); transform-origin: left;
   transition: transform var(--qp-dur-base) var(--qp-ease);
 }
-.nav__link:hover { opacity: 1; }
-.nav__link[aria-current="true"] { opacity: 1; color: var(--text-on-brand-accent); }
+.nav__link:hover, .nav__link[aria-current="true"] { color: var(--text-accent); }
+.nav.is-stuck .nav__link:hover, .nav.is-stuck .nav__link[aria-current="true"] { color: var(--text-on-brand-accent); }
 .nav__link[aria-current="true"]::after,
 .nav__link:hover::after { transform: scaleX(1); }
 
-.nav__toggle { display: none; padding: var(--qp-space-2xs); color: var(--text-on-brand); }
-.nav__toggle svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+.nav__toggle { display: none; padding: var(--qp-space-2xs); color: inherit; }
+.nav__toggle svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 2; }
 
 /* ---------------------------------------------------------------- 6. Hero */
+/* The brochure cover: ivory page, photograph fading in from the right, the
+   title block bold in maroon and ink on the left, the maroon sweep with its
+   gold and tan bands closing the page at the bottom-left.               */
 .hero {
   position: relative;
-  min-height: min(100svh, 940px);
+  min-height: min(100svh, 980px);
   display: flex; flex-direction: column; justify-content: center;
-  /* The sweep now overlaps the hero, and its deep end is on the left, over
-     the same side the copy sits on. 0.8 of its height is the depth the
-     curve has actually reached by the time it hits the container gutter. */
   padding-block: calc(var(--nav-h) + var(--qp-space-lg))
-                 calc(var(--ribbon-h-hero) * 0.8 + var(--qp-space-md));
-  background: var(--surface-brand);
+                 calc(var(--ribbon-h-hero) * 0.82 + var(--qp-space-lg));
+  background: var(--surface-ivory);
+  color: var(--text-primary);
   overflow: hidden;
   isolation: isolate;
 }
@@ -274,132 +292,159 @@ ul, ol { list-style: none; padding: 0; }
 .hero__media img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 62% 46%;
-  /* The source is the brochure's Im0 flattened onto its own soft mask, so it
-     carries 51px of black down the left, 3px across the top, and the mask's
-     rounded corners with a chroma fringe. Crop the frame off at the source
-     rectangle: inset(top right bottom left) of 927x618.                  */
+  object-position: 72% 50%;
+  /* The source carries a black fringe down its left and across its top from
+     the brochure's soft mask. Crop it at the source rectangle.          */
   object-view-box: inset(2.27% 1.19% 2.27% 6.04%);
 }
-/* Solid maroon behind the type, releasing to a legible photograph on the
-   right. The bottom vignette is light now — the sweep terminates the hero,
-   so the photograph no longer has to fade itself out to meet it.        */
+/* solid ivory behind the type, releasing to the photograph on the right;
+   a light haze across the top keeps the masthead readable over the sky */
 .hero__scrim {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(96deg,
-      var(--qp-maroon) 0%,
-      var(--qp-maroon) 22%,
-      rgba(138, 21, 57, 0.84) 42%,
-      rgba(138, 21, 57, 0.42) 68%,
-      rgba(107, 15, 44, 0.16) 100%),
+    linear-gradient(90deg,
+      var(--qp-ivory) 0%,
+      var(--qp-ivory) 36%,
+      rgba(255, 248, 240, 0.94) 46%,
+      rgba(255, 248, 240, 0.62) 58%,
+      rgba(255, 248, 240, 0.18) 72%,
+      rgba(255, 248, 240, 0) 86%),
     linear-gradient(180deg,
-      rgba(107, 15, 44, 0.58) 0%,
-      transparent 22%,
-      transparent 66%,
-      rgba(107, 15, 44, 0.46) 100%);
+      rgba(255, 248, 240, 0.82) 0%,
+      rgba(255, 248, 240, 0) 22%);
 }
-.hero__inner { max-width: 62ch; }
+.hero__inner { max-width: 48rem; }
 
 .hero__title {
   font-family: var(--qp-font-display);
-  font-weight: var(--qp-weight-light);
+  font-weight: var(--qp-display-bold);
   font-size: var(--qp-size-display-xl);
-  line-height: 0.98;
+  line-height: 0.96;
   letter-spacing: var(--qp-tracking-display);
-  margin-block: var(--qp-space-md) var(--qp-space-sm);
-  color: var(--text-on-brand);
+  color: var(--text-primary);
 }
 .hero__title span { display: block; }
-.hero__title .is-gold { color: var(--text-on-brand-accent); }
+/* "QATAR PAVILION" — the cover's maroon capitals, diamond in front */
+.hero__title .is-brand {
+  color: var(--text-accent);
+  text-transform: uppercase;
+  letter-spacing: var(--qp-tracking-caps);
+  font-size: 0.78em;
+  display: flex; align-items: center; gap: 0.3em;
+  margin-bottom: 0.08em;
+}
+.hero__title .is-brand::before {
+  content: ""; flex: none;
+  width: 0.3em; height: 0.3em;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
 
 .hero__sub {
   font-family: var(--qp-font-display);
-  font-size: var(--qp-size-display-sm);
-  font-weight: var(--qp-weight-light);
-  color: var(--text-on-brand-secondary);
+  font-size: var(--qp-size-display-md);
+  font-weight: var(--qp-display-light);
+  color: var(--text-primary);
+  margin-top: var(--qp-space-sm);
 }
 .hero__rule {
   display: flex; align-items: center; gap: var(--qp-space-sm);
-  margin-block: var(--qp-space-lg);
+  margin-block: var(--qp-space-md);
   color: var(--accent);
-  max-width: 320px;
+  max-width: 360px;
 }
 .hero__rule::before, .hero__rule::after {
   content: ""; flex: 1; height: var(--qp-rule);
-  background: currentColor; opacity: 0.5;
+  background: currentColor;
 }
-.hero__rule span { font-size: 0.6rem; }
+.hero__rule span { display: block; width: 0.6rem; height: 0.6rem; font-size: 0; background: currentColor; transform: rotate(45deg); }
+
+.hero__meta {
+  display: flex; flex-direction: column; gap: var(--qp-space-2xs);
+  font-family: var(--qp-font-display);
+  font-size: var(--qp-size-body-lg);
+  font-weight: var(--qp-weight-bold);
+  color: var(--text-accent);
+}
+.hero__meta li { display: flex; align-items: center; gap: var(--qp-space-xs); }
+.hero__meta svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.7; flex: none; }
 
 .hero__tagline {
   font-family: var(--qp-font-display);
-  font-size: clamp(1.15rem, 0.9rem + 0.9vw, 1.65rem);
+  font-size: var(--qp-size-body-lg);
   font-style: italic;
-  color: var(--text-on-brand-accent);
-  max-width: 42ch;
+  font-weight: var(--qp-weight-medium);
+  color: var(--text-secondary);
+  margin-top: var(--qp-space-md);
+  max-width: 40ch;
 }
-.hero__meta {
-  display: flex; flex-wrap: wrap; gap: var(--qp-space-md) var(--qp-space-lg);
-  margin-top: var(--qp-space-lg);
-  font-size: var(--qp-size-body-sm);
-  color: var(--text-on-brand-secondary);
-}
-.hero__meta li { display: flex; align-items: center; gap: var(--qp-space-2xs); }
-.hero__meta svg { width: 17px; height: 17px; stroke: var(--accent); fill: none; stroke-width: 1.5; flex: none; }
 
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--qp-space-sm); margin-top: var(--qp-space-xl); }
 
 /* Countdown — the page's one live element above the fold */
 .countdown {
   margin-top: var(--qp-space-2xl);
-  border-top: var(--qp-rule) solid var(--line-on-brand);
+  border-top: var(--qp-rule) solid var(--line-on-light);
   padding-top: var(--qp-space-md);
   display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--qp-space-lg);
 }
 .countdown__label {
-  font-size: var(--qp-size-micro);
-  letter-spacing: var(--qp-tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--text-on-brand-secondary);
+  font-family: var(--qp-font-display);
+  font-size: var(--qp-size-body);
+  font-weight: var(--qp-weight-bold);
+  color: var(--text-primary);
 }
 .countdown__units { display: flex; gap: var(--qp-space-lg); }
-.countdown__unit { text-align: center; min-width: 62px; }
+.countdown__unit { text-align: center; min-width: 64px; }
 .countdown__num {
   display: block;
   font-family: var(--qp-font-display);
   font-weight: var(--qp-display-bold);
-  font-size: clamp(2rem, 1.5rem + 1.8vw, 3rem);
+  font-size: clamp(2.2rem, 1.6rem + 2vw, 3.25rem);
   line-height: 1;
-  color: var(--text-on-brand-accent);
+  color: var(--text-accent);
   font-variant-numeric: tabular-nums;
 }
 .countdown__unit span:last-child {
+  font-family: var(--qp-font-ui);
   font-size: var(--qp-size-micro);
+  font-weight: var(--qp-weight-semibold);
   letter-spacing: var(--qp-tracking-wide);
   text-transform: uppercase;
-  color: var(--text-on-brand-secondary);
+  color: var(--text-secondary);
 }
 .countdown__live {
   font-family: var(--qp-font-display);
-  font-weight: var(--qp-display-light);
+  font-weight: var(--qp-display-bold);
   font-size: var(--qp-size-display-sm);
-  color: var(--text-on-brand-accent);
+  color: var(--text-accent);
 }
 
 /* ------------------------------------------------------------ 7. Pavilion */
+/* The brochure's "Welcome" page: maroon field, the map on the left, white
+   bold title and white body on the right.                               */
 .pavilion__grid {
   display: grid;
   grid-template-columns: minmax(220px, 0.72fr) 1.28fr;
   gap: clamp(2rem, 6vw, 5rem);
   align-items: center;
 }
-.pavilion__map { position: relative; }
-.pavilion__map img {
-  width: 100%; max-width: 340px; margin-inline: auto;
-  filter: drop-shadow(0 26px 50px rgba(107, 15, 44, 0.26));
+/* the shadow sits on the wrapper: a filter on the masked box itself would be
+   clipped by its own mask */
+.pavilion__map { position: relative; filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.35)); }
+.pavilion__map-shape {
+  width: 100%; max-width: 360px; margin-inline: auto;
+  aspect-ratio: 457 / 900;
+  -webkit-mask: url("../img/scenes/qatar-outline.png") center / contain no-repeat;
+  mask: url("../img/scenes/qatar-outline.png") center / contain no-repeat;
+}
+.pavilion__map-shape img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 64% 50%;
 }
 .pavilion__body p + p { margin-top: var(--qp-space-md); }
-.pavilion__body p { font-size: var(--qp-size-body-lg); color: var(--text-secondary); max-width: var(--qp-measure); }
+.pavilion__body p { font-size: var(--qp-size-body-lg); line-height: var(--qp-leading-relaxed); color: var(--text-on-brand-secondary); max-width: var(--qp-measure); }
 
 .pillars {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -414,17 +459,19 @@ ul, ol { list-style: none; padding: 0; }
   font-family: var(--qp-font-display);
   font-weight: var(--qp-display-bold);
   font-size: var(--qp-size-display-sm);
-  color: var(--text-accent);
+  color: var(--text-on-brand-accent);
   display: block;
 }
-.pillar p { font-size: var(--qp-size-body-sm); color: var(--text-secondary); margin-top: var(--qp-space-3xs); }
+.pillar p { font-size: var(--qp-size-body-sm); color: var(--text-on-brand-secondary); margin-top: var(--qp-space-3xs); }
 
 /* ----------------------------------------------------------- 8. Programme */
+/* The five side-event pages: ivory, maroon kicker, ink title, petrol theme
+   chip, bold maroon date and time, maroon rings round the speakers.     */
 .rail {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: var(--rail-gap);
-  border-top: var(--qp-rule) solid var(--line-on-brand);
+  border-top: var(--qp-rule) solid var(--line-on-light);
   margin-bottom: var(--qp-space-2xl);
 }
 .rail__tab {
@@ -432,55 +479,58 @@ ul, ol { list-style: none; padding: 0; }
   display: flex; flex-direction: column; align-items: flex-start;
   text-align: left;
   padding: var(--qp-space-md) var(--qp-space-2xs) var(--qp-space-md) 0;
-  color: var(--text-on-brand-secondary);
+  color: var(--text-secondary);
   transition: color var(--qp-dur-base) var(--qp-ease);
 }
 /* keeps the status pills on one baseline when themes wrap to two lines */
 .rail__tab .rail__status { margin-top: auto; }
 .rail__tab::before {
   content: ""; position: absolute; inset-block-start: -1px; inset-inline-start: 0;
-  width: 100%; height: var(--qp-rule-thick);
-  background: var(--accent);
+  width: 100%; height: 4px;
+  background: var(--text-accent);
   transform: scaleX(0); transform-origin: left;
   transition: transform var(--qp-dur-base) var(--qp-ease);
 }
-.rail__tab:hover { color: var(--text-on-brand); }
-.rail__tab[aria-selected="true"] { color: var(--text-on-brand); }
+.rail__tab:hover { color: var(--text-primary); }
+.rail__tab[aria-selected="true"] { color: var(--text-primary); }
 .rail__tab[aria-selected="true"]::before { transform: scaleX(1); }
 
 .rail__no {
   font-family: var(--qp-font-display);
   font-weight: var(--qp-display-bold);
-  font-size: 1.5rem; line-height: 1;
-  color: var(--text-on-brand-accent);
+  font-size: 2rem; line-height: 1;
+  color: var(--text-accent);
   display: block;
 }
 .rail__date {
   display: block;
+  font-family: var(--qp-font-display);
   font-size: var(--qp-size-body-sm);
-  font-weight: var(--qp-weight-semibold);
-  letter-spacing: 0.06em;
+  font-weight: var(--qp-weight-bold);
+  letter-spacing: var(--qp-tracking-caps);
   text-transform: uppercase;
   margin-top: var(--qp-space-2xs);
 }
 .rail__theme {
   display: block;
-  font-size: var(--qp-size-caption);
+  font-size: var(--qp-size-body-sm);
+  line-height: 1.3;
   margin-top: var(--qp-space-3xs);
-  opacity: 0.72;
 }
 .rail__status {
   display: inline-block;
-  margin-top: var(--qp-space-2xs);
+  margin-top: var(--qp-space-xs);
+  font-family: var(--qp-font-ui);
   font-size: var(--qp-size-micro);
+  font-weight: var(--qp-weight-semibold);
   letter-spacing: var(--qp-tracking-wide);
   text-transform: uppercase;
-  padding: 2px 8px;
+  padding: 3px 9px;
   border-radius: var(--qp-radius-pill);
-  border: var(--qp-rule) solid var(--line-on-brand);
+  border: var(--qp-rule) solid var(--line-on-light);
 }
 .rail__status[data-state="live"]  { background: var(--accent); color: var(--qp-maroon-deep); border-color: var(--accent); }
-.rail__status[data-state="past"]  { opacity: 0.5; }
+.rail__status[data-state="past"]  { opacity: 0.55; }
 
 /* Event panel */
 .panel { display: none; }
@@ -494,85 +544,81 @@ ul, ol { list-style: none; padding: 0; }
   gap: clamp(1.75rem, 4vw, 3.5rem);
   align-items: start;
 }
-/* one corner rounded hard, the rest barely — the brochure's image container */
+/* the brochure's image container: one corner rounded hard, a maroon band
+   round the photograph */
 .panel__media {
   position: relative;
   border-radius: var(--qp-radius-lg) clamp(40px, 9vw, 96px) var(--qp-radius-lg) var(--qp-radius-lg);
   overflow: hidden;
+  border: 3px solid var(--surface-brand);
   box-shadow: var(--qp-shadow-lg);
+  background: var(--surface-brand);
 }
-.panel__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-.panel__media::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(0deg, rgba(107,15,44,0.5), transparent 55%);
-}
+.panel__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: inherit; }
 
-.panel__no {
-  font-family: var(--qp-font-ui);
-  font-size: var(--qp-size-micro);
-  letter-spacing: var(--qp-tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--text-on-brand-accent);
-  display: inline-flex; align-items: center; gap: var(--qp-space-2xs);
-}
-.panel__no::before { content: "\25C6"; font-size: 0.72em; }
+.panel__no { color: var(--text-accent); }
 
 .panel__title {
   font-family: var(--qp-font-display);
-  font-weight: var(--qp-weight-light);
+  font-weight: var(--qp-display-bold);
   font-size: var(--qp-size-display-md);
   line-height: var(--qp-leading-snug);
   letter-spacing: var(--qp-tracking-display);
+  color: var(--text-primary);
   margin-block: var(--qp-space-xs) var(--qp-space-md);
 }
 .chip {
   display: inline-block;
   background: var(--theme-chip-bg); color: var(--theme-chip-text);
-  font-size: var(--qp-size-caption);
-  font-weight: var(--qp-weight-medium);
-  letter-spacing: 0.03em;
-  padding: 0.4rem 1rem;
-  border-radius: var(--qp-radius-sm);
+  font-family: var(--qp-font-display);
+  font-size: var(--qp-size-body);
+  font-weight: var(--qp-weight-bold);
+  line-height: 1.2;
+  padding: 0.45rem 1.1rem;
+  border-radius: 2px;
 }
 .panel__when {
   display: flex; flex-wrap: wrap; gap: var(--qp-space-md);
   margin-top: var(--qp-space-md);
-  font-size: var(--qp-size-body-sm);
-  color: var(--text-on-brand-secondary);
+  font-size: var(--qp-size-body);
+  font-weight: var(--qp-weight-bold);
+  color: var(--text-accent);
 }
 .panel__when li { display: flex; align-items: center; gap: var(--qp-space-2xs); }
-.panel__when svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.5; flex: none; }
+.panel__when svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.7; flex: none; }
 .panel__desc {
   margin-top: var(--qp-space-md);
-  color: var(--text-on-brand-secondary);
-  line-height: var(--qp-leading-relaxed);
+  color: var(--text-primary);
+  line-height: var(--qp-leading-normal);
   max-width: var(--qp-measure);
 }
 
+/* "◆ Agenda" / "◆ Speakers" with the short gold rule beneath */
 .panel__sub {
-  font-family: var(--qp-font-ui);
-  font-size: var(--qp-size-micro);
-  letter-spacing: var(--qp-tracking-eyebrow);
-  text-transform: uppercase;
-  color: var(--text-on-brand-accent);
   margin-block: var(--qp-space-2xl) var(--qp-space-md);
-  display: flex; align-items: center; gap: var(--qp-space-sm);
+  color: var(--text-accent);
+  padding-bottom: var(--qp-space-2xs);
+  position: relative;
 }
-.panel__sub::after { content: ""; flex: 1; height: var(--qp-rule); background: var(--line-on-brand); }
+.panel__sub::after {
+  content: ""; position: absolute; left: 0; bottom: 0;
+  width: 56px; height: 3px; background: var(--accent);
+}
 
-.agenda { display: grid; gap: var(--qp-space-2xs); max-width: 520px; }
+.agenda { display: grid; gap: var(--qp-space-xs); max-width: 540px; }
 .agenda li {
   display: flex; align-items: baseline; gap: var(--qp-space-sm);
   font-size: var(--qp-size-body-sm);
-  color: var(--text-on-brand-secondary);
+  color: var(--text-primary);
 }
 .agenda li span:first-child { flex: none; }
 .agenda li::after {
   content: ""; order: 1; flex: 1;
-  border-bottom: var(--qp-rule) dotted var(--line-on-brand);
-  transform: translateY(-4px);
+  border-bottom: var(--qp-rule) solid var(--accent);
+  transform: translateY(-5px);
+  opacity: 0.7;
 }
-.agenda li span:last-child { order: 2; flex: none; color: var(--text-on-brand-accent); font-variant-numeric: tabular-nums; }
+.agenda li span:last-child { order: 2; flex: none; font-weight: var(--qp-weight-bold); color: var(--text-accent); font-variant-numeric: tabular-nums; }
 
 .speakers {
   display: grid;
@@ -596,26 +642,35 @@ ul, ol { list-style: none; padding: 0; }
   font-weight: var(--qp-display-bold);
   font-size: var(--qp-size-display-sm);
   line-height: var(--qp-leading-snug);
-  color: var(--text-on-brand-accent);
+  color: var(--text-accent);
   margin-top: var(--qp-space-sm);
   /* reserve two lines so role and organisation align across the row */
   min-height: calc(2em * var(--qp-leading-snug));
 }
-.speaker__role { font-size: var(--qp-size-caption); color: var(--text-on-brand); margin-top: var(--qp-space-3xs); }
-.speaker__org  { font-size: var(--qp-size-caption); color: var(--text-on-brand-secondary); font-style: italic; margin-top: var(--qp-space-3xs); }
+.speaker__role { font-size: var(--qp-size-body-sm); line-height: 1.3; color: var(--text-primary); margin-top: var(--qp-space-3xs); }
+.speaker__org  { font-size: var(--qp-size-body-sm); line-height: 1.3; color: var(--text-secondary); font-style: italic; margin-top: var(--qp-space-3xs); }
 
 /* ---------------------------------------------------------- 9. Highlights */
+/* The brochure's "Key Highlights" page: maroon field, cards alternating
+   between gold-outlined maroon and filled ivory, gold numerals.         */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--qp-space-md);
 }
 .stat-card {
-  background: var(--surface-card);
-  border: var(--qp-rule) solid var(--qp-sand-deep);
-  border-radius: var(--qp-radius-md);
+  border-radius: var(--qp-radius-lg);
   padding: var(--qp-space-lg);
   display: flex; flex-direction: column; gap: var(--qp-space-md);
+}
+.stat-card--outline {
+  border: var(--qp-rule) solid var(--accent);
+  color: var(--text-on-brand);
+}
+.stat-card--ivory {
+  background: var(--surface-ivory);
+  color: var(--text-primary);
+  box-shadow: var(--qp-shadow-lg);
 }
 .stat-card--wide { grid-column: span 2; }
 .stat-card__title {
@@ -623,10 +678,10 @@ ul, ol { list-style: none; padding: 0; }
   font-weight: var(--qp-display-bold);
   font-size: var(--qp-size-display-sm);
   line-height: var(--qp-leading-snug);
-  color: var(--text-accent);
   padding-bottom: var(--qp-space-sm);
-  border-bottom: var(--qp-rule) solid var(--qp-sand-deep);
+  border-bottom: var(--qp-rule) solid var(--accent);
 }
+.stat-card--ivory .stat-card__title { color: var(--text-accent); }
 .stat-card__list { display: grid; gap: var(--qp-space-md); }
 .stat-card--wide .stat-card__list { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
 
@@ -634,21 +689,27 @@ ul, ol { list-style: none; padding: 0; }
 .stat__num {
   font-family: var(--qp-font-display);
   font-weight: var(--qp-display-bold);
-  font-size: clamp(2.25rem, 1.8rem + 1.6vw, 3.1rem);
+  font-size: clamp(2.4rem, 1.9rem + 1.7vw, 3.4rem);
   line-height: 0.9;
-  color: var(--text-gold);
+  color: var(--accent);
   font-variant-numeric: tabular-nums;
 }
-.stat__label { display: block; font-weight: var(--qp-weight-semibold); font-size: var(--qp-size-body-sm); color: var(--text-primary); }
-.stat__note  { display: block; font-size: var(--qp-size-caption); color: var(--text-secondary); margin-top: var(--qp-space-3xs); }
+.stat-card--ivory .stat__num { color: var(--text-gold); }
+.stat__label { display: block; font-weight: var(--qp-weight-bold); font-size: var(--qp-size-body); line-height: 1.2; }
+.stat__note  { display: block; font-size: var(--qp-size-body-sm); line-height: 1.35; margin-top: var(--qp-space-3xs); }
+.stat-card--outline .stat__note { color: var(--text-on-brand-secondary); }
+.stat-card--ivory   .stat__note { color: var(--text-secondary); }
 
+/* the brochure's policy tags: gold bars */
 .tags { display: flex; flex-wrap: wrap; gap: var(--qp-space-2xs); margin-top: auto; }
 .tag {
-  font-size: var(--qp-size-micro);
-  letter-spacing: 0.04em;
-  background: var(--surface-brand); color: var(--text-on-brand);
-  padding: 0.3rem 0.7rem;
-  border-radius: var(--qp-radius-sm);
+  font-family: var(--qp-font-display);
+  font-size: 1rem;
+  font-weight: var(--qp-weight-bold);
+  line-height: 1.2;
+  background: var(--accent); color: var(--qp-maroon-deep);
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
 }
 
 /* ---------------------------------------------------------------- 10. MECC */
@@ -658,49 +719,53 @@ ul, ol { list-style: none; padding: 0; }
   gap: clamp(2rem, 6vw, 5rem);
   align-items: center;
 }
-.mecc__body p { color: var(--text-secondary); line-height: var(--qp-leading-relaxed); max-width: var(--qp-measure); }
+.mecc__body p { color: var(--text-primary); line-height: var(--qp-leading-normal); max-width: var(--qp-measure); }
 .mecc__body p + p { margin-top: var(--qp-space-md); }
 
+/* the brochure's strategy tagline bar. On paper it is white on gold; that is
+   2.7:1 on screen, so the bar is the pale gold band colour and the line is
+   maroon — the same pairing as the cover's title on ivory.               */
 .quote {
-  border-left: var(--qp-rule-thick) solid var(--accent);
-  padding-left: var(--qp-space-md);
   margin-block: var(--qp-space-xl);
+  max-width: var(--qp-measure);
 }
 .quote p {
-  font-family: var(--qp-font-display);
-  font-weight: var(--qp-display-light);
-  font-size: var(--qp-size-display-md);
-  font-style: italic;
-  line-height: var(--qp-leading-snug);
+  display: inline-block;
+  background: var(--qp-gold-pale);
   color: var(--text-accent);
+  font-family: var(--qp-font-display);
+  font-weight: var(--qp-weight-semibold);
+  font-size: var(--qp-size-display-sm);
+  font-style: italic;
+  line-height: 1.3;
+  padding: 0.55em 1em;
+  border-radius: 2px;
 }
 .quote cite {
   display: block; margin-top: var(--qp-space-sm);
   font-family: var(--qp-font-ui);
-  font-size: var(--qp-size-micro);
+  font-size: var(--qp-size-caption);
+  font-weight: var(--qp-weight-semibold);
   letter-spacing: var(--qp-tracking-wide);
   text-transform: uppercase;
   font-style: normal;
   color: var(--text-secondary);
 }
 
-/* The mark is reversed out white, so on ivory it needs its own ground. The
-   brochure carries every image the same way: a maroon container with one
-   corner rounded hard (~44% of its width) and the rest barely softened.  */
+/* The mark is reversed out white, so on ivory it needs its own ground:
+   the brochure's image container, maroon with one corner rounded hard. */
 .mecc__emblem {
-  background:
-    radial-gradient(120% 90% at 15% 0%, rgba(163, 42, 76, 0.5), transparent 62%),
-    var(--surface-brand);
+  background: var(--surface-brand);
   border-radius: var(--qp-radius-lg) clamp(48px, 12vw, 128px) var(--qp-radius-lg) var(--qp-radius-lg);
   padding: clamp(2rem, 5vw, 3.5rem);
   display: flex; align-items: center; justify-content: center;
   box-shadow: var(--qp-shadow-lg);
+  outline: var(--qp-rule) solid var(--accent);
+  outline-offset: -12px;
 }
 .mecc__emblem img { width: min(240px, 88%); margin-inline: auto; }
 
 /* ------------------------------------------------------------- 11. Reports */
-/* 3-up at desktop: report titles are long, and narrower columns wrap them to
-   four ragged lines. Three columns sets most titles on two. */
 .reports { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--qp-space-md); }
 .report {
   position: relative;
@@ -726,8 +791,10 @@ ul, ol { list-style: none; padding: 0; }
 .report--media .report__kind { margin-top: var(--qp-space-md); }
 .report:hover .report__media img { transform: scale(1.04); }
 .report__kind {
+  font-family: var(--qp-font-ui);
   font-size: var(--qp-size-micro);
-  letter-spacing: var(--qp-tracking-eyebrow);
+  font-weight: var(--qp-weight-semibold);
+  letter-spacing: var(--qp-tracking-wide);
   text-transform: uppercase;
   color: var(--text-gold);
 }
@@ -738,11 +805,47 @@ ul, ol { list-style: none; padding: 0; }
   line-height: var(--qp-leading-snug);
   color: var(--text-accent);
 }
-.report__note { font-size: var(--qp-size-body-sm); color: var(--text-secondary); }
+.report__note { font-size: var(--qp-size-body-sm); line-height: 1.4; color: var(--text-secondary); }
 .reports__cta { margin-top: var(--qp-space-2xl); }
 
 /* -------------------------------------------------------------- 12. Footer */
-.footer { background: var(--surface-brand-deep); color: var(--text-on-brand); padding-block: var(--qp-space-3xl) var(--qp-space-lg); }
+/* The back cover: deep maroon over the faint skyline photograph, the
+   ministry's line in gold capitals, then the contact block.             */
+.footer {
+  position: relative;
+  /* solid for the first stretch so it meets the sweep's flat fill without a
+     join; the photograph only fades in below that */
+  background:
+    linear-gradient(180deg,
+      var(--surface-brand-deep) 0,
+      var(--surface-brand-deep) 96px,
+      rgba(107, 15, 44, 0.9) 320px,
+      rgba(107, 15, 44, 0.96) 100%),
+    url("../img/scenes/hero.jpg") center 40% / cover no-repeat var(--surface-brand-deep);
+  color: var(--text-on-brand);
+  padding-block: var(--qp-space-3xl) var(--qp-space-lg);
+}
+.footer__tagline {
+  text-align: center;
+  margin-bottom: var(--qp-space-3xl);
+}
+.footer__tagline img { max-width: 260px; margin: 0 auto var(--qp-space-lg); }
+.footer__tagline p {
+  font-family: var(--qp-font-display);
+  font-weight: var(--qp-display-bold);
+  font-size: var(--qp-size-display-sm);
+  letter-spacing: var(--qp-tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-on-brand-accent);
+  max-width: 24ch;
+  margin-inline: auto;
+  line-height: 1.25;
+}
+.footer__tagline::after {
+  content: ""; display: block;
+  width: 56px; height: 2px; background: var(--accent);
+  margin: var(--qp-space-md) auto 0;
+}
 .footer__top {
   display: grid;
   grid-template-columns: minmax(220px, 1fr) 2fr;
@@ -762,6 +865,7 @@ ul, ol { list-style: none; padding: 0; }
 }
 .footer__col a, .footer__contact a {
   font-size: var(--qp-size-body-sm);
+  line-height: 1.35;
   color: var(--text-on-brand-secondary);
   text-decoration: none;
   transition: color var(--qp-dur-fast) var(--qp-ease);
@@ -771,24 +875,29 @@ ul, ol { list-style: none; padding: 0; }
 
 .footer__contact { display: grid; gap: var(--qp-space-2xs); font-size: var(--qp-size-body-sm); color: var(--text-on-brand-secondary); }
 .footer__contact li { display: flex; gap: var(--qp-space-2xs); align-items: flex-start; }
-.footer__contact svg { width: 16px; height: 16px; stroke: var(--accent); fill: none; stroke-width: 1.5; flex: none; margin-top: 3px; }
+.footer__contact svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.6; flex: none; margin-top: 4px; }
 
 .footer__bottom {
   display: flex; flex-wrap: wrap; gap: var(--qp-space-md);
   align-items: center; justify-content: space-between;
   padding-top: var(--qp-space-lg);
+  font-family: var(--qp-font-ui);
   font-size: var(--qp-size-caption);
   color: var(--text-on-brand-secondary);
 }
 .social { display: flex; gap: var(--qp-space-sm); }
 .social a {
-  font-size: var(--qp-size-caption);
   color: var(--text-on-brand-secondary);
   text-decoration: none;
   transition: color var(--qp-dur-fast) var(--qp-ease);
 }
 .social a:hover { color: var(--text-on-brand-accent); }
-.footer__hash { color: var(--text-on-brand-accent); letter-spacing: var(--qp-tracking-wide); }
+.footer__hash {
+  font-family: var(--qp-font-display);
+  font-size: var(--qp-size-body);
+  font-weight: var(--qp-weight-bold);
+  color: var(--text-on-brand-accent);
+}
 
 /* ------------------------------------------------------- 13. Scroll reveal */
 [data-reveal] {
@@ -809,7 +918,7 @@ ul, ol { list-style: none; padding: 0; }
   .pavilion__grid,
   .panel__grid,
   .mecc__grid { grid-template-columns: 1fr; }
-  .pavilion__map img { max-width: 300px; }
+  .pavilion__map-shape { max-width: 300px; }
   .panel__media img { aspect-ratio: 16 / 9; }
   .mecc__emblem { display: none; }
   .stat-card--wide { grid-column: span 1; }
@@ -835,21 +944,34 @@ ul, ol { list-style: none; padding: 0; }
     opacity: 1; pointer-events: auto; visibility: visible; transform: none;
     transition-delay: 0s;
   }
-  .nav__link { padding-block: var(--qp-space-sm); border-bottom: var(--qp-rule) solid var(--line-on-brand); font-size: var(--qp-size-body); }
+  .nav__link { padding-block: var(--qp-space-sm); border-bottom: var(--qp-rule) solid var(--line-on-brand); font-size: 1.35rem; color: var(--text-on-brand); }
+  .nav__link:hover, .nav__link[aria-current="true"] { color: var(--text-on-brand-accent); }
   .nav__link::after { display: none; }
-  .nav { background: var(--nav-bg); height: var(--nav-h-compact); }
+  /* the masthead is always the maroon bar on small screens */
+  .nav { background: var(--nav-bg); height: var(--nav-h-compact); color: var(--text-on-brand); }
+  .nav .nav__marks { display: none; }
+  .nav .nav__logo { display: block; height: 28px; }
+  .hero { padding-top: calc(var(--nav-h-compact) + var(--qp-space-xl)); }
+  /* the photograph sits under the copy here, so the ivory runs top-down */
+  .hero__scrim {
+    background:
+      linear-gradient(180deg,
+        var(--qp-ivory) 0%,
+        var(--qp-ivory) 48%,
+        rgba(255, 248, 240, 0.9) 66%,
+        rgba(255, 248, 240, 0.72) 100%);
+  }
 }
 
 @media (max-width: 640px) {
   :root { --portrait-size: var(--portrait-size-sm); }
-  /* keep the sweep clearance the base rule sets — the gutter is only 20px
-     here, so the copy sits much nearer x=0, where the curve is deepest */
   .hero {
     min-height: auto;
-    padding-block: calc(var(--nav-h) + var(--qp-space-lg))
-                   calc(var(--ribbon-h-hero) * 0.95 + var(--qp-space-md));
+    padding-bottom: calc(var(--ribbon-h-hero) * 0.95 + var(--qp-space-md));
   }
   .hero__media img { object-position: 70% 50%; }
+  .hero__title .is-brand { font-size: 0.72em; }
+  .rail__tab { padding-block: var(--qp-space-sm); }
   .countdown { margin-top: var(--qp-space-2xl); gap: var(--qp-space-md); }
   .countdown__units { gap: var(--qp-space-md); width: 100%; justify-content: space-between; }
   .countdown__unit { min-width: 0; }
