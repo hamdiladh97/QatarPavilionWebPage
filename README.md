@@ -185,10 +185,12 @@ it. `.section:has(+ .ribbon)` buys back the bottom padding the overlap eats.
 
 ## Assets
 
-Portraits and scene photography were extracted from the official brochure PDF —
-speaker photos are cropped from the gold rings at 265×265, matched to each person by
-position on the page. These are **real named officials**, so none of the imagery is
-AI-generated.
+Speaker portraits come from the speaker assets in `side_events_and_speakers/` (its
+captions index maps each file to its side event and slot). Each is cropped square
+around the face at 320×320, so heads sit at the same size and height across the row.
+Scene photography was extracted from the official brochure PDF, and report covers are
+page 1 of each report PDF. These are **real named officials**, so none of the imagery
+is AI-generated.
 
 To replace an asset, keep the filename and the page picks it up. Portraits should be
 square; event scenes look best at 4:5 or wider.
@@ -216,8 +218,8 @@ available, swap them in — they will be sharper at large sizes.
 ## Known gaps / next steps
 
 - **Reports link to the MECC publications index**, not to individual PDFs — the brief supplied titles only. Add a `href` per item in `content.js` when the direct URLs exist.
-- **Two speakers have no organisation listed** (Fatma Varank, Rohini Kohli) — the brochure omits them. The card layout degrades cleanly; fill in `org` when confirmed.
-- **Report cover images** are not used; cards are typographic. Add a `cover` field and an `<img>` if covers are supplied.
+- **Two speaker titles are incomplete in every supplied source**: María del Pilar Bueno has none, and Mohamed Al Bader reads "Head" exactly as the brochure prints it. The card layout degrades cleanly; fill in `role` when confirmed.
+- **Speaker line-up follows `side_events_and_speakers/`** (four per event, first-named where the sheet offers alternates). The sheet's two extra Event 4 names (Priya Donti, Samantha Burgess) have no photos and are left out.
 - Source brochure typos were corrected in the copy: "Sri Lank" → "Sri Lanka", "(NDCs are submitted" → "(NDCs) are submitted".
 
 ---

@@ -121,13 +121,13 @@ window.PAVILION_CONTENT = {
           },
           {
             "name": "Ms. Fatma Varank",
-            "role": "Deputy Minister",
-            "org": "",
+            "role": "Deputy Minister, Chief Climate Change Negotiator",
+            "org": "Ministry of Environment, Urbanization and Climate Change — Türkiye",
             "photo": "assets/img/speakers/fatma-varank.jpg"
           },
           {
             "name": "Ms. Rohini Kohli",
-            "role": "",
+            "role": "Head of Climate Change Adaptation (Policy)",
             "org": "UNDP",
             "photo": "assets/img/speakers/rohini-kohli.jpg"
           }
@@ -158,13 +158,13 @@ window.PAVILION_CONTENT = {
           {
             "name": "Ms. María del Pilar Bueno",
             "role": "",
-            "org": "Ministry of Environment — Colombia",
+            "org": "IDEAM / Ministry of Environment — Colombia",
             "photo": "assets/img/speakers/maria-del-pilar-bueno.jpg"
           },
           {
             "name": "Siti Nadia Nurul Azizah",
             "role": "Nature-based Solutions Specialist",
-            "org": "Ministry of Environment and Forestry",
+            "org": "Ministry of Environment and Forestry — Indonesia",
             "photo": "assets/img/speakers/siti-nadia-nurul-azizah.jpg"
           }
         ]
@@ -396,64 +396,55 @@ window.PAVILION_CONTENT = {
         "title": "Sectoral Climate Vulnerability and Impact Assessment: Biodiversity",
         "kind": "Assessment",
         "note": "Climate risks to Qatar's ecosystems, marine life and protected habitats.",
-        "image": "assets/img/reports/biodiversity.jpg",
-        "imageAlt": "Elevated boardwalk through the Al Thakira mangroves in Qatar"
+        "image": "assets/img/reports/biodiversity.jpg"
       },
       {
         "title": "Sectoral Climate Vulnerability and Impact Assessment: Agriculture and Livestock",
         "kind": "Assessment",
         "note": "Vulnerability of food security, farming and livestock to a warming climate.",
-        "image": "assets/img/reports/agriculture.jpg",
-        "imageAlt": "Farm worker tending hydroponic seedlings in a Qatari greenhouse"
+        "image": "assets/img/reports/agriculture.jpg"
       },
       {
         "title": "Sectoral Climate Vulnerability and Impact Assessment: Public Health",
         "kind": "Assessment",
         "note": "Health risks from rising heat, air quality and vector-borne disease.",
-        "image": "assets/img/reports/public-health.jpg",
-        "imageAlt": "Child wearing a protective mask in a building lobby"
+        "image": "assets/img/reports/public-health.jpg"
       },
       {
         "title": "Sectoral Climate Vulnerability and Impact Assessment: Water",
         "kind": "Assessment",
         "note": "Pressures on desalination, groundwater and water security under climate change.",
-        "image": "assets/img/reports/water.jpg",
-        "imageAlt": "Aerial view of a coastal desalination plant on the Gulf"
+        "image": "assets/img/reports/water.jpg"
       },
       {
         "title": "Sectoral Climate Vulnerability and Impact Assessment: Energy",
         "kind": "Assessment",
         "note": "Climate risks and resilience needs across Qatar's energy infrastructure.",
-        "image": "assets/img/reports/energy.jpg",
-        "imageAlt": "Rows of solar panels under a desert sky"
+        "image": "assets/img/reports/energy.jpg"
       },
       {
         "title": "Sectoral Climate Vulnerability and Impact Assessment: Infrastructure",
         "kind": "Assessment",
         "note": "Exposure of buildings, transport and utilities to extreme heat and flooding.",
-        "image": "assets/img/reports/infrastructure.jpg",
-        "imageAlt": "Msheireb Downtown Doha tram passing through the district"
+        "image": "assets/img/reports/infrastructure.jpg"
       },
       {
         "title": "Climate Vulnerability and Impact Assessment in Key Sectors: Summary Report",
         "kind": "Summary",
         "note": "Cross-sector findings from the climate vulnerability and impact assessment.",
-        "image": "assets/img/reports/summary.jpg",
-        "imageAlt": "The National Museum of Qatar at sunset"
+        "image": "assets/img/reports/summary.jpg"
       },
       {
         "title": "Qatar Climate Profile",
         "kind": "Profile",
         "note": "Qatar's observed and projected climate — temperature, rainfall and extremes.",
-        "image": "assets/img/reports/climate-profile.jpg",
-        "imageAlt": "Camels resting in the desert outside Doha"
+        "image": "assets/img/reports/climate-profile.jpg"
       },
       {
         "title": "Climate Vulnerability and Impact Assessment Framework: Methodical Approach",
         "kind": "Framework",
         "note": "The methodology behind the National Adaptation Plan's vulnerability assessments.",
-        "image": "assets/img/reports/methodology.jpg",
-        "imageAlt": "Sunset over Qatar's desert dunes"
+        "image": "assets/img/reports/methodology.jpg"
       }
     ],
     "cta": {
@@ -463,27 +454,6 @@ window.PAVILION_CONTENT = {
   },
   "footer": {
     "columns": [
-      {
-        "title": "About the Ministry",
-        "links": [
-          {
-            "label": "About the Minister",
-            "href": "https://www.mecc.gov.qa/english/About/Pages/AboutMinister.aspx"
-          },
-          {
-            "label": "Latest news",
-            "href": "https://www.mecc.gov.qa/english/About/Pages/News.aspx"
-          },
-          {
-            "label": "Organizational structure",
-            "href": "https://www.mecc.gov.qa/english/About/Pages/OrganizationalStructure.aspx"
-          },
-          {
-            "label": "Frequently asked questions",
-            "href": "https://www.mecc.gov.qa/english/AwarenessandMedia/Pages/FAQ.aspx"
-          }
-        ]
-      },
       {
         "title": "Laws and agreements",
         "links": [
@@ -547,10 +517,6 @@ window.PAVILION_CONTENT = {
       {
         "label": "LinkedIn",
         "href": "https://www.linkedin.com/company/ministry-of-environment-and-climate-change-state-of-qatar/"
-      },
-      {
-        "label": "TikTok",
-        "href": "https://www.tiktok.com/@moecc.qatar"
       }
     ],
     "copyright": "© Ministry of Environment and Climate Change 2026. All rights reserved."

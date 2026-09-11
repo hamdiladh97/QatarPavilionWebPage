@@ -339,7 +339,7 @@
                 return '<li><a href="' + esc(l.href) + '" target="_blank" rel="noopener">' + esc(l.label) + "</a></li>";
               }).join("") + "</ul></div>";
           }).join("") +
-          '<div class="footer__col"><h3>Contact</h3><ul class="footer__contact">' +
+          '<div class="footer__col footer__col--contact"><h3>Contact</h3><ul class="footer__contact">' +
             "<li>" + ICON.pin + '<a href="' + esc(c.mapHref) + '" target="_blank" rel="noopener">' + esc(c.address) + "</a></li>" +
             "<li>" + ICON.tel + '<a href="tel:' + esc(c.phone.replace(/\s/g, "")) + '">' + esc(c.phone) + "</a>" +
               ' &middot; <a href="tel:' + esc(c.hotline) + '">' + esc(c.hotline) + "</a></li>" +

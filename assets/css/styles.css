@@ -784,7 +784,8 @@ p { text-wrap: pretty; }
 .report__media {
   display: block;
   margin: 0 calc(var(--qp-space-lg) * -1);
-  aspect-ratio: 4 / 3;
+  /* the report's A4 cover, whole */
+  aspect-ratio: 794 / 1123;
   overflow: hidden;
 }
 .report__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--qp-dur-slow) var(--qp-ease); }
@@ -848,14 +849,15 @@ p { text-wrap: pretty; }
 }
 .footer__top {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) 2fr;
+  grid-template-columns: auto 1fr;
   gap: clamp(2rem, 5vw, 4rem);
   padding-bottom: var(--qp-space-2xl);
   border-bottom: var(--qp-rule) solid var(--line-on-brand);
 }
 .footer__logos { display: flex; flex-direction: column; gap: var(--qp-space-lg); align-items: flex-start; }
 .footer__logos img { max-width: 210px; }
-.footer__cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--qp-space-lg); }
+/* two link columns, then contact at double width for its 2 x 2 block */
+.footer__cols { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: var(--qp-space-lg); }
 .footer__col h3 {
   font-family: var(--qp-font-display);
   font-weight: var(--qp-display-bold);
@@ -871,9 +873,15 @@ p { text-wrap: pretty; }
   transition: color var(--qp-dur-fast) var(--qp-ease);
 }
 .footer__col li + li { margin-top: var(--qp-space-2xs); }
+.footer__contact li + li { margin-top: 0; } /* the grid gap spaces these */
 .footer__col a:hover, .footer__contact a:hover { color: var(--text-on-brand-accent); }
 
-.footer__contact { display: grid; gap: var(--qp-space-2xs); font-size: var(--qp-size-body-sm); color: var(--text-on-brand-secondary); }
+.footer__contact {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--qp-space-sm) var(--qp-space-lg);
+  font-size: var(--qp-size-body-sm); color: var(--text-on-brand-secondary);
+  overflow-wrap: anywhere;
+}
 .footer__contact li { display: flex; gap: var(--qp-space-2xs); align-items: flex-start; }
 .footer__contact svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 1.6; flex: none; margin-top: 4px; }
 
@@ -923,6 +931,7 @@ p { text-wrap: pretty; }
   .mecc__emblem { display: none; }
   .stat-card--wide { grid-column: span 1; }
   .rail { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .footer__top { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 880px) {
@@ -952,6 +961,8 @@ p { text-wrap: pretty; }
   .nav .nav__marks { display: none; }
   .nav .nav__logo { display: block; height: 28px; }
   .hero { padding-top: calc(var(--nav-h-compact) + var(--qp-space-xl)); }
+  .footer__cols { grid-template-columns: 1fr 1fr; }
+  .footer__col--contact { grid-column: 1 / -1; }
   /* the photograph sits under the copy here, so the ivory runs top-down */
   .hero__scrim {
     background:
@@ -976,7 +987,6 @@ p { text-wrap: pretty; }
   .countdown__units { gap: var(--qp-space-md); width: 100%; justify-content: space-between; }
   .countdown__unit { min-width: 0; }
   .speakers { grid-template-columns: repeat(2, 1fr); }
-  .footer__top { grid-template-columns: 1fr; }
   .footer__bottom { flex-direction: column; align-items: flex-start; }
   .btn { width: 100%; justify-content: center; }
   .hero__actions .btn { width: auto; flex: 1 1 auto; }
