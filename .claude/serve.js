@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.join(__dirname, '..');
-const port = process.argv[2] || 4173;
+const port = process.env.PORT || process.argv[2] || 4173;
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.svg': 'image/svg+xml',
   '.woff2': 'font/woff2', '.json': 'application/json', '.ico': 'image/x-icon' };

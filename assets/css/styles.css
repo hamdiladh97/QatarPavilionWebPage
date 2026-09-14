@@ -293,9 +293,6 @@ p { text-wrap: pretty; }
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: 72% 50%;
-  /* The source carries a black fringe down its left and across its top from
-     the brochure's soft mask. Crop it at the source rectangle.          */
-  object-view-box: inset(2.27% 1.19% 2.27% 6.04%);
 }
 /* solid ivory behind the type, releasing to the photograph on the right;
    a light haze across the top keeps the masthead readable over the sky */
@@ -511,11 +508,20 @@ p { text-wrap: pretty; }
   text-transform: uppercase;
   margin-top: var(--qp-space-2xs);
 }
+.rail__title {
+  display: block;
+  font-family: var(--qp-font-display);
+  font-weight: var(--qp-display-bold);
+  font-size: var(--qp-size-body-sm);
+  line-height: 1.25;
+  margin-top: var(--qp-space-2xs);
+}
 .rail__theme {
   display: block;
   font-size: var(--qp-size-body-sm);
   line-height: 1.3;
   margin-top: var(--qp-space-3xs);
+  margin-bottom: var(--qp-space-2xs);
 }
 .rail__status {
   display: inline-block;
@@ -649,6 +655,60 @@ p { text-wrap: pretty; }
 }
 .speaker__role { font-size: var(--qp-size-body-sm); line-height: 1.3; color: var(--text-primary); margin-top: var(--qp-space-3xs); }
 .speaker__org  { font-size: var(--qp-size-body-sm); line-height: 1.3; color: var(--text-secondary); font-style: italic; margin-top: var(--qp-space-3xs); }
+/* short centred lines: break "Mr. Oubay M. / Al-Khaznadar" as the brochure
+   does, never "Al- / Khaznadar", and no one-word last lines */
+.speaker__name, .speaker__role, .speaker__org { text-wrap: balance; }
+.speaker__name span { white-space: nowrap; }
+
+/* The brochure's Speakers pages: rows of four, centred, each portrait on a
+   tan diamond with a smaller one bridging to its neighbour. The fills are
+   translucent gold, so where diamonds cross they darken as the print does.
+   The crossings stay within the portrait band, so every line of text sits
+   on a single layer and keeps its contrast.                             */
+.directory { margin-top: var(--qp-space-4xl); }
+.speakers--directory {
+  --dir-cols: 4;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: var(--qp-space-2xl) var(--qp-space-md);
+  position: relative;
+  isolation: isolate;
+}
+.speakers--directory .speaker {
+  position: relative;
+  flex: 0 0 calc((100% - (var(--dir-cols) - 1) * var(--qp-space-md)) / var(--dir-cols));
+}
+.speakers--directory .speaker::before,
+.speakers--directory .speaker::after {
+  content: ""; position: absolute; z-index: -1;
+  top: calc(var(--portrait-size) / 2);
+  aspect-ratio: 1;
+  background: var(--accent);
+  opacity: 0.15;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+/* squares, so width = diagonal / sqrt 2 */
+.speakers--directory .speaker::before { left: 50%; width: calc(var(--portrait-size) * 1.2); }
+.speakers--directory .speaker::after  { left: calc(100% + var(--qp-space-md) / 2); width: calc(var(--portrait-size) * 0.78); }
+.speakers--directory .speaker:nth-child(4n)::after,
+.speakers--directory .speaker:last-child::after { display: none; }
+
+.speaker__session {
+  display: inline-block;
+  padding-block: 0.65rem;          /* 44px tap target on one line */
+  line-height: 1.3;
+  margin-top: var(--qp-space-3xs);
+  font-family: var(--qp-font-display);
+  font-size: var(--qp-size-body-sm);
+  font-weight: var(--qp-weight-bold);
+  color: var(--text-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+.speaker__session:hover { text-decoration-color: currentColor; }
+/* narrow columns break at the dot, never inside "10 NOV" */
+.speaker__session span { white-space: nowrap; }
 
 /* ---------------------------------------------------------- 9. Highlights */
 /* The brochure's "Key Highlights" page: maroon field, cards alternating
@@ -784,11 +844,14 @@ p { text-wrap: pretty; }
 .report__media {
   display: block;
   margin: 0 calc(var(--qp-space-lg) * -1);
-  /* the report's A4 cover, whole */
-  aspect-ratio: 794 / 1123;
+  /* the cover sits whole on a sand ground: a white cover (NDC 3.0) keeps its
+     edge, and one that is not A4 (Environmental Sustainability) is never cut */
+  aspect-ratio: 5 / 6;
+  padding: var(--qp-space-lg);
+  background: var(--surface-sand);
   overflow: hidden;
 }
-.report__media img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--qp-dur-slow) var(--qp-ease); }
+.report__media img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 10px 16px rgba(29, 29, 27, 0.22)); transition: transform var(--qp-dur-slow) var(--qp-ease); }
 .report--media .report__kind { margin-top: var(--qp-space-md); }
 .report:hover .report__media img { transform: scale(1.04); }
 .report__kind {
@@ -848,16 +911,18 @@ p { text-wrap: pretty; }
   margin: var(--qp-space-md) auto 0;
 }
 .footer__top {
+  /* logo and contact as one centred group; the contact track stops growing
+     at 46rem so wide screens widen the margins, not the gaps */
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 46rem);
+  justify-content: center;
+  align-items: center;
   gap: clamp(2rem, 5vw, 4rem);
   padding-bottom: var(--qp-space-2xl);
   border-bottom: var(--qp-rule) solid var(--line-on-brand);
 }
 .footer__logos { display: flex; flex-direction: column; gap: var(--qp-space-lg); align-items: flex-start; }
 .footer__logos img { max-width: 210px; }
-/* two link columns, then contact at double width for its 2 x 2 block */
-.footer__cols { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: var(--qp-space-lg); }
 .footer__col h3 {
   font-family: var(--qp-font-display);
   font-weight: var(--qp-display-bold);
@@ -865,16 +930,14 @@ p { text-wrap: pretty; }
   color: var(--text-on-brand-accent);
   margin-bottom: var(--qp-space-sm);
 }
-.footer__col a, .footer__contact a {
+.footer__contact a {
   font-size: var(--qp-size-body-sm);
   line-height: 1.35;
   color: var(--text-on-brand-secondary);
   text-decoration: none;
   transition: color var(--qp-dur-fast) var(--qp-ease);
 }
-.footer__col li + li { margin-top: var(--qp-space-2xs); }
-.footer__contact li + li { margin-top: 0; } /* the grid gap spaces these */
-.footer__col a:hover, .footer__contact a:hover { color: var(--text-on-brand-accent); }
+.footer__contact a:hover { color: var(--text-on-brand-accent); }
 
 .footer__contact {
   display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -931,7 +994,13 @@ p { text-wrap: pretty; }
   .mecc__emblem { display: none; }
   .stat-card--wide { grid-column: span 1; }
   .rail { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
-  .footer__top { grid-template-columns: 1fr; }
+  /* the bridging diamond is dropped on the last card of each row */
+  .speakers--directory { --dir-cols: 3; }
+  .speakers--directory .speaker:nth-child(4n)::after { display: block; }
+  .speakers--directory .speaker:nth-child(3n)::after,
+  .speakers--directory .speaker:last-child::after { display: none; }
+  .footer__top { grid-template-columns: minmax(0, 46rem); }
+  .footer__logos { justify-self: center; }
 }
 
 @media (max-width: 880px) {
@@ -961,8 +1030,6 @@ p { text-wrap: pretty; }
   .nav .nav__marks { display: none; }
   .nav .nav__logo { display: block; height: 28px; }
   .hero { padding-top: calc(var(--nav-h-compact) + var(--qp-space-xl)); }
-  .footer__cols { grid-template-columns: 1fr 1fr; }
-  .footer__col--contact { grid-column: 1 / -1; }
   /* the photograph sits under the copy here, so the ivory runs top-down */
   .hero__scrim {
     background:
@@ -983,6 +1050,12 @@ p { text-wrap: pretty; }
   .hero__media img { object-position: 70% 50%; }
   .hero__title .is-brand { font-size: 0.72em; }
   .rail__tab { padding-block: var(--qp-space-sm); }
+  /* the open panel prints the title directly below; keep the rail short */
+  .rail__title { display: none; }
+  .speakers--directory { --dir-cols: 2; }
+  .speakers--directory .speaker:nth-child(3n)::after { display: block; }
+  .speakers--directory .speaker:nth-child(2n)::after,
+  .speakers--directory .speaker:last-child::after { display: none; }
   .countdown { margin-top: var(--qp-space-2xl); gap: var(--qp-space-md); }
   .countdown__units { gap: var(--qp-space-md); width: 100%; justify-content: space-between; }
   .countdown__unit { min-width: 0; }

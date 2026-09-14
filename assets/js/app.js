@@ -167,9 +167,25 @@
   }
   var STATUS_TEXT = { live: "Live now", past: "Concluded", upcoming: "Upcoming" };
 
-  function renderProgramme() {
-    var p = C.programme, now = Date.now();
+  function speakerCard(s, extra) {
+    return '<li class="speaker">' +
+      '<img class="speaker__photo" src="' + esc(s.photo) + '" alt="' + esc(s.name) + '" loading="lazy">' +
+      /* hyphenated parts never split: "Suh-Yong", "Al-Khaznadar" */
+      '<p class="speaker__name">' + esc(s.name).replace(/\S+-\S+/g, "<span>$&</span>") + "</p>" +
+      (s.role ? '<p class="speaker__role">' + esc(s.role) + "</p>" : "") +
+      (s.org ? '<p class="speaker__org">' + esc(s.org) + "</p>" : "") +
+      (extra || "") +
+      "</li>";
+  }
 
+  function renderProgramme() {
+    var p = C.programme, d = p.directory, now = Date.now();
+
+    /* events list speaker ids; the roster holds each person once */
+    var byId = {};
+    p.speakers.forEach(function (s) { byId[s.id] = s; });
+
+    /* the brochure's calendar: number, date, title, theme */
     var tabs = p.events.map(function (ev, i) {
       var st = statusOf(ev, now);
       return '<button class="rail__tab" role="tab" type="button"' +
@@ -177,6 +193,7 @@
         ' aria-selected="' + (i === 0) + '" tabindex="' + (i === 0 ? 0 : -1) + '">' +
         '<span class="rail__no">' + esc(ev.no) + "</span>" +
         '<span class="rail__date">' + dayLabel(ev.start) + "</span>" +
+        '<span class="rail__title">' + esc(ev.title) + "</span>" +
         '<span class="rail__theme">' + esc(ev.theme) + "</span>" +
         '<span class="rail__status" data-state="' + st + '">' + STATUS_TEXT[st] + "</span>" +
         "</button>";
@@ -212,16 +229,21 @@
         /* speakers get the full panel width so all four sit on one row */
         '<h4 class="eyebrow panel__sub">Speakers</h4>' +
         '<ul class="speakers">' +
-          ev.speakers.map(function (s) {
-            return '<li class="speaker">' +
-              '<img class="speaker__photo" src="' + esc(s.photo) + '" alt="' + esc(s.name) + '" loading="lazy">' +
-              '<p class="speaker__name">' + esc(s.name) + "</p>" +
-              (s.role ? '<p class="speaker__role">' + esc(s.role) + "</p>" : "") +
-              (s.org ? '<p class="speaker__org">' + esc(s.org) + "</p>" : "") +
-              "</li>";
-          }).join("") +
+          /* an unknown id drops its card rather than blanking the page */
+          ev.speakers.map(function (id) { return byId[id]; }).filter(Boolean)
+            .map(function (s) { return speakerCard(s); }).join("") +
         "</ul>" +
         "</div>";
+    }).join("");
+
+    /* the brochure's Speakers pages: everyone once, each card linking back
+       to the session(s) they speak at */
+    var directory = p.speakers.map(function (s) {
+      return speakerCard(s, p.events.map(function (ev, i) {
+        return ev.speakers.indexOf(s.id) < 0 ? "" :
+          '<a class="speaker__session" href="#tab-' + i + '" data-tab="' + i + '">' +
+            "<span>Side-Event " + esc(ev.no) + " &middot;</span> <span>" + dayLabel(ev.start) + "</span></a>";
+      }).join(""));
     }).join("");
 
     return '<section class="section section--ivory" id="programme"><div class="container">' +
@@ -232,6 +254,14 @@
       "</div>" +
       '<div class="rail" role="tablist" aria-label="Side events by date" data-reveal>' + tabs + "</div>" +
       '<div class="panels">' + panels + "</div>" +
+      '<div class="directory" id="speakers">' +
+        '<div class="section__head" data-reveal>' +
+          '<p class="eyebrow">' + esc(d.eyebrow) + "</p>" +
+          '<h3 class="section__title">' + esc(d.heading) + "</h3>" +
+          '<p class="section__intro">' + esc(d.intro) + "</p>" +
+        "</div>" +
+        '<ul class="speakers speakers--directory" data-reveal>' + directory + "</ul>" +
+      "</div>" +
       "</div></section>";
   }
 
@@ -332,21 +362,13 @@
         '<div class="footer__logos">' +
           '<img src="assets/img/logos/mecc-white.png" alt="Ministry of Environment and Climate Change, State of Qatar" style="max-width:150px">' +
         "</div>" +
-        '<div class="footer__cols">' +
-          f.columns.map(function (col) {
-            return '<div class="footer__col"><h3>' + esc(col.title) + "</h3><ul>" +
-              col.links.map(function (l) {
-                return '<li><a href="' + esc(l.href) + '" target="_blank" rel="noopener">' + esc(l.label) + "</a></li>";
-              }).join("") + "</ul></div>";
-          }).join("") +
-          '<div class="footer__col footer__col--contact"><h3>Contact</h3><ul class="footer__contact">' +
-            "<li>" + ICON.pin + '<a href="' + esc(c.mapHref) + '" target="_blank" rel="noopener">' + esc(c.address) + "</a></li>" +
-            "<li>" + ICON.tel + '<a href="tel:' + esc(c.phone.replace(/\s/g, "")) + '">' + esc(c.phone) + "</a>" +
-              ' &middot; <a href="tel:' + esc(c.hotline) + '">' + esc(c.hotline) + "</a></li>" +
-            "<li>" + ICON.mail + '<a href="mailto:' + esc(c.email) + '">' + esc(c.email) + "</a></li>" +
-            "<li>" + ICON.web + '<a href="https://www.mecc.gov.qa/english/Pages/default.aspx" target="_blank" rel="noopener">' + esc(c.site) + "</a></li>" +
-          "</ul></div>" +
-        "</div>" +
+        '<div class="footer__col"><h3>Contact</h3><ul class="footer__contact">' +
+          "<li>" + ICON.pin + '<a href="' + esc(c.mapHref) + '" target="_blank" rel="noopener">' + esc(c.address) + "</a></li>" +
+          "<li>" + ICON.tel + '<a href="tel:' + esc(c.phone.replace(/\s/g, "")) + '">' + esc(c.phone) + "</a>" +
+            ' &middot; <a href="tel:' + esc(c.hotline) + '">' + esc(c.hotline) + "</a></li>" +
+          "<li>" + ICON.mail + '<a href="mailto:' + esc(c.email) + '">' + esc(c.email) + "</a></li>" +
+          "<li>" + ICON.web + '<a href="https://www.mecc.gov.qa/english/Pages/default.aspx" target="_blank" rel="noopener">' + esc(c.site) + "</a></li>" +
+        "</ul></div>" +
       "</div>" +
       '<div class="footer__bottom">' +
         "<span>" + esc(f.copyright) + "</span>" +
@@ -489,6 +511,18 @@
       if (next === undefined) return;
       e.preventDefault();
       select((next + tabEls.length) % tabEls.length, true);
+    });
+
+    /* a directory card's session link opens that session and brings the
+       calendar into view */
+    app.addEventListener("click", function (e) {
+      var a = e.target.closest("[data-tab]");
+      if (!a) return;
+      e.preventDefault();
+      var i = Number(a.dataset.tab);
+      select(i, false);
+      tabList.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      tabEls[i].focus({ preventScroll: true });
     });
 
     /* open on the session that is live, or the next one still to come */

@@ -18,7 +18,7 @@ assets/css/styles.css      components
 assets/js/app.js           rendering + countdown, tabs, counters, scrollspy
 assets/img/logos/          Qatar Pavilion, COP31 Türkiye, MECC marks
 assets/img/scenes/         hero, Qatar map, one image per side event
-assets/img/speakers/       20 speaker portraits
+assets/img/speakers/       22 speaker portraits
 .claude/launch.json        local preview config (not needed in production)
 ```
 
@@ -48,12 +48,26 @@ offset and are always displayed in venue time, whatever timezone the visitor is 
   "image": "assets/img/scenes/event-6.jpg",
   "imageAlt": "…",
   "description": "…",
-  "speakers": [ { "name": "…", "role": "…", "org": "…", "photo": "…" } ]
+  "speakers": ["saad-al-hitmi", "john-verdieck", "…"]
 }
 ```
 
 The date rail, the Upcoming/Live now/Concluded badges, and the tab that opens by
 default are all derived from these timestamps — no further edits needed.
+
+### Speakers
+
+Each person is listed once, in `programme.speakers`:
+
+```js
+{ "id": "john-verdieck", "name": "Mr. John Verdieck", "role": "…", "org": "…", "photo": "…" }
+```
+
+Events refer to speakers by `id`. The same roster renders the **Speakers** directory
+under the programme, in array order — which follows the brochure's Speakers pages
+(MECC first). A directory card links to every session that lists its `id`; a speaker
+listed in no event (e.g. Eng. Ahmed Al Sada, Eng. Mahmoud al Marwani) still gets a
+card, without a link. To move a speaker between panels, change the ids — nothing else.
 
 ### Countdown
 
@@ -185,29 +199,27 @@ it. `.section:has(+ .ribbon)` buys back the bottom padding the overlap eats.
 
 ## Assets
 
-Speaker portraits come from the speaker assets in `side_events_and_speakers/` (its
-captions index maps each file to its side event and slot). Each is cropped square
-around the face at 320×320, so heads sit at the same size and height across the row.
-Scene photography was extracted from the official brochure PDF, and report covers are
-page 1 of each report PDF. These are **real named officials**, so none of the imagery
+Speaker portraits come from the speaker assets in `side_events_and_speakers/`, except
+`john-verdieck.jpg` and `mahmoud-al-marwani.jpg`, which have no supplied photo and were
+extracted from the cut-out portraits embedded in *Side-Events Brochure New.pdf*, set on
+the brochure's own circle fill (`#ECD1B7`). Each is cropped square around the face at
+320×320, so heads sit at the same size and height across the row.
+Scene photography was extracted from the official brochure PDF. Report covers are
+from `Reports/QReports/`: page 1 of each PDF, or the supplied cover PNG where no PDF
+was given (Climate Change Impact Roundup, National Adaptation Plan). These are **real named officials**, so none of the imagery
 is AI-generated.
 
 To replace an asset, keep the filename and the page picks it up. Portraits should be
 square; event scenes look best at 4:5 or wider.
 
-**`hero.jpg` carries a frame that is not part of the photograph.** It is the
-brochure's `Im0` flattened onto its own soft mask, so the 927×618 bitmap has 51px
-of black down the left, 3px across the top, and the mask's rounded corners with a
-chroma fringe over the top-left. The clean rectangle does not exist in the PDF —
-the rounding was the mask, and the black is baked into the colour JPEG. Rather
-than re-encode, the crop is declared in CSS:
-
-```css
-.hero__media img { object-view-box: inset(2.27% 1.19% 2.27% 6.04%); }
-```
-
-Those are the source rectangle's insets as percentages of 927×618. If a clean
-original is ever supplied, drop that line and the rest works unchanged.
+**`hero.jpg` is cropped from the brochure's `Im0`**, which was flattened onto its
+own soft mask: a black band down the left, a black rounded corner at the top-left,
+and a pale chroma fringe inside them. The black is cut out of the file itself
+(insets from the 3600×2406 source: left 217px, top 175px, right 43px, bottom 55px),
+so the hero, the footer background and the social-share image all get the clean
+photograph in every browser. The pale fringe down the far left is kept, because
+cropping it would cut through the wind turbine; the hero scrim and the footer's
+maroon overlay both cover it.
 
 **Logos** were chroma-keyed off the brochure's flat maroon and have transparent
 backgrounds, so they sit on any ground. If official vector (SVG/EPS) marks become
@@ -218,9 +230,9 @@ available, swap them in — they will be sharper at large sizes.
 ## Known gaps / next steps
 
 - **Reports link to the MECC publications index**, not to individual PDFs — the brief supplied titles only. Add a `href` per item in `content.js` when the direct URLs exist.
-- **Two speaker titles are incomplete in every supplied source**: María del Pilar Bueno has none, and Mohamed Al Bader reads "Head" exactly as the brochure prints it. The card layout degrades cleanly; fill in `role` when confirmed.
-- **Speaker line-up follows `side_events_and_speakers/`** (four per event, first-named where the sheet offers alternates). The sheet's two extra Event 4 names (Priya Donti, Samantha Burgess) have no photos and are left out.
-- Source brochure typos were corrected in the copy: "Sri Lank" → "Sri Lanka", "(NDCs are submitted" → "(NDCs) are submitted".
+- **One speaker title is incomplete**: Mohamed al Bader reads "Head" exactly as the brochure prints it. Fill in `role` when confirmed.
+- **Speaker line-up, names and credits follow *Side-Events Brochure New.pdf*** (it supersedes `side_events_and_speakers/`, whose Event 1 slot for Eng. Ahmed Al Sada is now Mr. John Verdieck). Credits are the brochure's, except "Türkiye" is used throughout where one card prints "Turkey".
+- Source brochure typos were corrected in the copy: "Sri Lank" → "Sri Lanka", "(NDCs are submitted" → "(NDCs) are submitted", "Change Departmen" → "Change Department", "JessicaTroni" → "Jessica Troni".
 
 ---
 

@@ -77,7 +77,7 @@ window.PAVILION_CONTENT = {
   "programme": {
     "eyebrow": "Side Events",
     "heading": "Qatar Pavilion Programme",
-    "intro": "Five panel discussions across the two weeks of COP31. Select a date to view the session, its agenda and its speakers.",
+    "intro": "Five panel discussions across the two weeks of COP31. Select a session to view its agenda and its speakers.",
     "agenda": [
       {
         "item": "Opening remarks",
@@ -106,32 +106,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-1.jpg",
         "imageAlt": "A cracked drought plain giving way to a green river corridor and a city skyline",
         "description": "As countries move beyond the formulation of National Adaptation Plans (NAPs), the emphasis is increasingly on implementation, delivery, and impact. Translating adaptation priorities into concrete actions requires effective governance, financing mechanisms, coordination across sectors, and systems to track progress. This panel discussion explores how countries are advancing NAP implementation in practice, highlighting challenges, enabling conditions, and lessons learned.",
-        "speakers": [
-          {
-            "name": "Eng. Ahmed Mohamed Al Sada",
-            "role": "Assistant Undersecretary for Climate Change Affairs",
-            "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
-            "photo": "assets/img/speakers/ahmed-mohamed-al-sada.jpg"
-          },
-          {
-            "name": "Eng. Saad Al Hitmi",
-            "role": "Director of Climate Change Department",
-            "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
-            "photo": "assets/img/speakers/saad-al-hitmi.jpg"
-          },
-          {
-            "name": "Ms. Fatma Varank",
-            "role": "Deputy Minister, Chief Climate Change Negotiator",
-            "org": "Ministry of Environment, Urbanization and Climate Change — Türkiye",
-            "photo": "assets/img/speakers/fatma-varank.jpg"
-          },
-          {
-            "name": "Ms. Rohini Kohli",
-            "role": "Head of Climate Change Adaptation (Policy)",
-            "org": "UNDP",
-            "photo": "assets/img/speakers/rohini-kohli.jpg"
-          }
-        ]
+        "speakers": ["saad-al-hitmi", "john-verdieck", "fatma-varank", "rohini-kohli"]
       },
       {
         "no": "02",
@@ -142,32 +117,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-2.jpg",
         "imageAlt": "Renewable energy infrastructure under an open sky",
         "description": "Measurement, reporting, and verification (MRV) systems are essential not only for transparency, but also for guiding climate action implementation and accountability. Well-designed MRV systems support policy-making, track progress, and inform future investments. This panel discusses how countries are operationalizing MRV systems that serve both reporting obligations and implementation needs.",
-        "speakers": [
-          {
-            "name": "Mohamed Al Marri",
-            "role": "Head of MRV Section",
-            "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
-            "photo": "assets/img/speakers/mohamed-al-marri.jpg"
-          },
-          {
-            "name": "Mr. Suh-Yong Chung",
-            "role": "Former Greenhouse Gas Inventory & Research Center (GIR) advisor",
-            "org": "Korea Environment Institute (KEI) — Republic of Korea",
-            "photo": "assets/img/speakers/suh-yong-chung.jpg"
-          },
-          {
-            "name": "Ms. María del Pilar Bueno",
-            "role": "",
-            "org": "IDEAM / Ministry of Environment — Colombia",
-            "photo": "assets/img/speakers/maria-del-pilar-bueno.jpg"
-          },
-          {
-            "name": "Siti Nadia Nurul Azizah",
-            "role": "Nature-based Solutions Specialist",
-            "org": "Ministry of Environment and Forestry — Indonesia",
-            "photo": "assets/img/speakers/siti-nadia-nurul-azizah.jpg"
-          }
-        ]
+        "speakers": ["mohamed-al-marri", "suh-yong-chung", "maria-del-pilar-bueno", "siti-nadia-nurul-azizah"]
       },
       {
         "no": "03",
@@ -178,32 +128,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-3.jpg",
         "imageAlt": "A city under construction beside wind turbines and solar arrays at sunrise",
         "description": "As updated Nationally Determined Contributions (NDCs) are submitted, attention is increasingly focused on implementation. Delivering NDC commitments requires strong coordination across sectors, clear policy frameworks, financing strategies, and monitoring systems. This panel discussion explores practical approaches to implementing NDCs and turning ambition into measurable results.",
-        "speakers": [
-          {
-            "name": "Baligh Awad",
-            "role": "Climate Change Engineer",
-            "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
-            "photo": "assets/img/speakers/baligh-awad.jpg"
-          },
-          {
-            "name": "Mr. Axel Michaelowa",
-            "role": "Senior Founding Partner",
-            "org": "Perspectives Climate Group — Germany",
-            "photo": "assets/img/speakers/axel-michaelowa.jpg"
-          },
-          {
-            "name": "Dr. Elisabeth Türk",
-            "role": "Director, Economic Cooperation and Trade",
-            "org": "United Nations Economic Commission for Europe (UNECE)",
-            "photo": "assets/img/speakers/elisabeth-turk.jpg"
-          },
-          {
-            "name": "Yalchin Rafiyev",
-            "role": "Lead Climate Negotiator, COP29 Presidency",
-            "org": "Ministry of Foreign Affairs — Azerbaijan",
-            "photo": "assets/img/speakers/yalchin-rafiyev.jpg"
-          }
-        ]
+        "speakers": ["baligh-awad", "axel-michaelowa", "elisabeth-turk", "yalchin-rafiyev"]
       },
       {
         "no": "04",
@@ -214,32 +139,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-4.jpg",
         "imageAlt": "A climate analyst reviewing a digital globe and live environmental data",
         "description": "Data, digital platforms, and artificial intelligence are increasingly shaping how climate action is planned, implemented, and monitored. When applied responsibly, digital tools can enhance efficiency, improve decision-making, and strengthen accountability. This panel explores real-world applications, opportunities, and governance considerations related to digital and AI-enabled climate implementation.",
-        "speakers": [
-          {
-            "name": "Mr. Mohamed al Bader",
-            "role": "Head",
-            "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
-            "photo": "assets/img/speakers/mohamed-al-bader.jpg"
-          },
-          {
-            "name": "Ms. Zulfiya Khazina",
-            "role": "NAP Project Manager",
-            "org": "Global Green Growth Institute (GGGI)",
-            "photo": "assets/img/speakers/zulfiya-khazina.jpg"
-          },
-          {
-            "name": "Bernhard Kowatsch",
-            "role": "Head, Innovation Accelerator",
-            "org": "World Food Programme (WFP) — Germany",
-            "photo": "assets/img/speakers/bernhard-kowatsch.jpg"
-          },
-          {
-            "name": "Sasha Luccioni",
-            "role": "AI & Climate Lead",
-            "org": "Hugging Face — Canada",
-            "photo": "assets/img/speakers/sasha-luccioni.jpg"
-          }
-        ]
+        "speakers": ["mohamed-al-bader", "zulfiya-khazina", "bernhard-kowatsch", "sasha-luccioni"]
       },
       {
         "no": "05",
@@ -249,33 +149,169 @@ window.PAVILION_CONTENT = {
         "end": "2026-11-18T14:00:00+03:00",
         "image": "assets/img/scenes/event-5.jpg",
         "imageAlt": "Delegates working together over maps and climate reporting data",
-        "description": "Developing countries face a range of challenges when preparing National Communications, particularly in meeting reporting obligations under the UNFCCC. These challenges can affect their ability to produce comprehensive, accurate, and timely reports on a regular basis. This session highlights practical experiences from different countries and explores ways to overcome common challenges, address existing gaps, strengthen technical capacities, and enhance the quality and comprehensiveness of National Communications reporting.",
-        "speakers": [
-          {
-            "name": "Mr. Oubay M. Al-Khaznadar",
-            "role": "Climate Engineer",
-            "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
-            "photo": "assets/img/speakers/oubay-m-al-khaznadar.jpg"
-          },
-          {
-            "name": "Ms. Jessica Troni",
-            "role": "Senior Programme Officer, Head of Adaptation Unit",
-            "org": "United Nations Environment Programme (UNEP)",
-            "photo": "assets/img/speakers/jessica-troni.jpg"
-          },
-          {
-            "name": "Pradeep Kurukulasuriya",
-            "role": "Executive Coordinator, Climate Promise",
-            "org": "UNDP — Sri Lanka",
-            "photo": "assets/img/speakers/pradeep-kurukulasuriya.jpg"
-          },
-          {
-            "name": "Prof. Dr. Barış Karapınar",
-            "role": "Climate Policy Expert; IPCC Lead Author (AR5)",
-            "org": "IPCC — Türkiye",
-            "photo": "assets/img/speakers/baris-karapinar.jpg"
-          }
-        ]
+        "description": "Developing countries face a range of challenges when preparing National Communications, particularly in meeting reporting obligations under the UNFCCC. These challenges can affect their ability to produce comprehensive, accurate, and timely reports on a regular basis. This session will highlight practical experiences from different countries and explore ways to overcome common challenges, address existing gaps, strengthen technical capacities, and enhance the quality and comprehensiveness of National Communications reporting.",
+        "speakers": ["oubay-m-al-khaznadar", "jessica-troni", "pradeep-kurukulasuriya", "baris-karapinar"]
+      }
+    ],
+    "directory": {
+      "eyebrow": "Speakers",
+      "heading": "Speakers at the Qatar Pavilion",
+      "intro": "The officials and experts taking part in the Qatar Pavilion side events at COP31."
+    },
+    "speakers": [
+      {
+        "id": "ahmed-mohamed-al-sada",
+        "name": "Eng. Ahmed Mohamed Al Sada",
+        "role": "Assistant Undersecretary for Climate Change Affairs",
+        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
+        "photo": "assets/img/speakers/ahmed-mohamed-al-sada.jpg"
+      },
+      {
+        "id": "saad-al-hitmi",
+        "name": "Eng. Saad Al Hitmi",
+        "role": "Director of Climate Change Department",
+        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
+        "photo": "assets/img/speakers/saad-al-hitmi.jpg"
+      },
+      {
+        "id": "fatma-varank",
+        "name": "Ms. Fatma Varank",
+        "role": "Deputy Minister – Chief Climate Change Negotiator",
+        "org": "Ministry of Environment, Urbanization and Climate Change — Türkiye",
+        "photo": "assets/img/speakers/fatma-varank.jpg"
+      },
+      {
+        "id": "mahmoud-al-marwani",
+        "name": "Eng. Mahmoud al Marwani",
+        "role": "Assistant Director of Climate Change Department",
+        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
+        "photo": "assets/img/speakers/mahmoud-al-marwani.jpg"
+      },
+      {
+        "id": "mohamed-al-marri",
+        "name": "Mr. Mohamed Al Marri",
+        "role": "Head of MRV Section",
+        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
+        "photo": "assets/img/speakers/mohamed-al-marri.jpg"
+      },
+      {
+        "id": "oubay-m-al-khaznadar",
+        "name": "Mr. Oubay M. Al-Khaznadar",
+        "role": "Climate Engineer",
+        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
+        "photo": "assets/img/speakers/oubay-m-al-khaznadar.jpg"
+      },
+      {
+        "id": "mohamed-al-bader",
+        "name": "Mr. Mohamed al Bader",
+        "role": "Head",
+        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
+        "photo": "assets/img/speakers/mohamed-al-bader.jpg"
+      },
+      {
+        "id": "baligh-awad",
+        "name": "Mr. Baligh Awad",
+        "role": "Climate Change Engineer",
+        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
+        "photo": "assets/img/speakers/baligh-awad.jpg"
+      },
+      {
+        "id": "maria-del-pilar-bueno",
+        "name": "Ms. María del Pilar Bueno",
+        "role": "Former Secretary of Climate Change of Argentina / IDEAM",
+        "org": "Ministry of Environment — Colombia",
+        "photo": "assets/img/speakers/maria-del-pilar-bueno.jpg"
+      },
+      {
+        "id": "suh-yong-chung",
+        "name": "Mr. Suh-Yong Chung",
+        "role": "Former Greenhouse Gas Inventory & Research Center (GIR) advisor",
+        "org": "Korea Environment Institute (KEI) — Republic of Korea",
+        "photo": "assets/img/speakers/suh-yong-chung.jpg"
+      },
+      {
+        "id": "axel-michaelowa",
+        "name": "Mr. Axel Michaelowa (Switzerland)",
+        "role": "Senior Founding Partner",
+        "org": "Perspectives Climate Group — Germany",
+        "photo": "assets/img/speakers/axel-michaelowa.jpg"
+      },
+      {
+        "id": "elisabeth-turk",
+        "name": "Dr. Elisabeth Türk",
+        "role": "Director, Economic Cooperation and Trade",
+        "org": "United Nations Economic Commission for Europe (UNECE) — Europe, US, UK",
+        "photo": "assets/img/speakers/elisabeth-turk.jpg"
+      },
+      {
+        "id": "yalchin-rafiyev",
+        "name": "Mr. Yalchin Rafiyev",
+        "role": "Lead Climate Negotiator and Lead Negotiator for COP29 Presidency",
+        "org": "Ministry of Foreign Affairs — COP29 Presidency",
+        "photo": "assets/img/speakers/yalchin-rafiyev.jpg"
+      },
+      {
+        "id": "siti-nadia-nurul-azizah",
+        "name": "Ms. Siti Nadia Nurul Azizah",
+        "role": "Nature-based Solutions Specialist",
+        "org": "Ministry of Environment and Forestry — Indonesia",
+        "photo": "assets/img/speakers/siti-nadia-nurul-azizah.jpg"
+      },
+      {
+        "id": "rohini-kohli",
+        "name": "Ms. Rohini Kohli",
+        "role": "Head of Climate Change Adaptation (Policy)",
+        "org": "UNDP",
+        "photo": "assets/img/speakers/rohini-kohli.jpg"
+      },
+      {
+        "id": "bernhard-kowatsch",
+        "name": "Mr. Bernhard Kowatsch",
+        "role": "Head, Innovation Accelerator",
+        "org": "World Food Programme (WFP) — Germany",
+        "photo": "assets/img/speakers/bernhard-kowatsch.jpg"
+      },
+      {
+        "id": "sasha-luccioni",
+        "name": "Ms. Sasha Luccioni",
+        "role": "AI & Climate Lead",
+        "org": "Hugging Face — Canada",
+        "photo": "assets/img/speakers/sasha-luccioni.jpg"
+      },
+      {
+        "id": "jessica-troni",
+        "name": "Ms. Jessica Troni",
+        "role": "Senior Programme Officer, Head of Adaptation Unit",
+        "org": "United Nations Environment Programme (UNEP)",
+        "photo": "assets/img/speakers/jessica-troni.jpg"
+      },
+      {
+        "id": "john-verdieck",
+        "name": "Mr. John Verdieck",
+        "role": "Director of Climate Policy",
+        "org": "The Nature Conservancy (TNC) — US",
+        "photo": "assets/img/speakers/john-verdieck.jpg"
+      },
+      {
+        "id": "zulfiya-khazina",
+        "name": "Ms. Zulfiya Khazina",
+        "role": "NAP Project Manager",
+        "org": "Global Green Growth Institute (GGGI) — Global",
+        "photo": "assets/img/speakers/zulfiya-khazina.jpg"
+      },
+      {
+        "id": "pradeep-kurukulasuriya",
+        "name": "Mr. Pradeep Kurukulasuriya",
+        "role": "Executive Coordinator, Climate Promise",
+        "org": "UNDP — Sri Lanka",
+        "photo": "assets/img/speakers/pradeep-kurukulasuriya.jpg"
+      },
+      {
+        "id": "baris-karapinar",
+        "name": "Prof. Dr. Barış Karapınar",
+        "role": "Climate Policy Expert; IPCC Lead Author (AR5)",
+        "org": "IPCC, UN climate processes — Türkiye",
+        "photo": "assets/img/speakers/baris-karapinar.jpg"
       }
     ]
   },
@@ -390,61 +426,43 @@ window.PAVILION_CONTENT = {
   "reports": {
     "eyebrow": "Publications",
     "heading": "Explore Qatar's Climate & Environment Reports",
-    "intro": "The nine climate vulnerability and impact assessment reports behind Qatar's National Adaptation Plan, covering six priority sectors plus the national climate profile, summary and methodology.",
+    "intro": "Explore key reports and publications that provide further insight into Qatar's climate action and environmental priorities.",
     "items": [
       {
-        "title": "Sectoral Climate Vulnerability and Impact Assessment: Biodiversity",
-        "kind": "Assessment",
-        "note": "Climate risks to Qatar's ecosystems, marine life and protected habitats.",
-        "image": "assets/img/reports/biodiversity.jpg"
+        "title": "Climate Change Impact Roundup 2025",
+        "kind": "Roundup",
+        "note": "The Ministry's roundup of climate change impacts in 2025. Volume 1, April 2026.",
+        "image": "assets/img/reports/climate-change-impact-roundup.jpg"
       },
       {
-        "title": "Sectoral Climate Vulnerability and Impact Assessment: Agriculture and Livestock",
-        "kind": "Assessment",
-        "note": "Vulnerability of food security, farming and livestock to a warming climate.",
-        "image": "assets/img/reports/agriculture.jpg"
+        "title": "National Adaptation Plan",
+        "kind": "Adaptation plan",
+        "note": "Adaptation for Life: Qatar's national plan for adapting to the impacts of climate change.",
+        "image": "assets/img/reports/national-adaptation-plan.jpg"
       },
       {
-        "title": "Sectoral Climate Vulnerability and Impact Assessment: Public Health",
-        "kind": "Assessment",
-        "note": "Health risks from rising heat, air quality and vector-borne disease.",
-        "image": "assets/img/reports/public-health.jpg"
+        "title": "Nationally Determined Contribution: Third Submission (NDC 3.0)",
+        "kind": "NDC",
+        "note": "The State of Qatar's third Nationally Determined Contribution under the Paris Agreement, November 2025.",
+        "image": "assets/img/reports/ndc-3.jpg"
       },
       {
-        "title": "Sectoral Climate Vulnerability and Impact Assessment: Water",
-        "kind": "Assessment",
-        "note": "Pressures on desalination, groundwater and water security under climate change.",
-        "image": "assets/img/reports/water.jpg"
+        "title": "Qatar National Climate Change Action Plan 2030",
+        "kind": "Action plan",
+        "note": "Qatar's national action plan on climate change to 2030.",
+        "image": "assets/img/reports/national-climate-change-action-plan.jpg"
       },
       {
-        "title": "Sectoral Climate Vulnerability and Impact Assessment: Energy",
-        "kind": "Assessment",
-        "note": "Climate risks and resilience needs across Qatar's energy infrastructure.",
-        "image": "assets/img/reports/energy.jpg"
+        "title": "Qatar National Strategy for Environment and Climate Change",
+        "kind": "Strategy",
+        "note": "Protecting and improving our environment to secure our people's well-being and the long-term resilience of our economy. Published in Arabic.",
+        "image": "assets/img/reports/national-environment-climate-change-strategy.jpg"
       },
       {
-        "title": "Sectoral Climate Vulnerability and Impact Assessment: Infrastructure",
-        "kind": "Assessment",
-        "note": "Exposure of buildings, transport and utilities to extreme heat and flooding.",
-        "image": "assets/img/reports/infrastructure.jpg"
-      },
-      {
-        "title": "Climate Vulnerability and Impact Assessment in Key Sectors: Summary Report",
-        "kind": "Summary",
-        "note": "Cross-sector findings from the climate vulnerability and impact assessment.",
-        "image": "assets/img/reports/summary.jpg"
-      },
-      {
-        "title": "Qatar Climate Profile",
-        "kind": "Profile",
-        "note": "Qatar's observed and projected climate — temperature, rainfall and extremes.",
-        "image": "assets/img/reports/climate-profile.jpg"
-      },
-      {
-        "title": "Climate Vulnerability and Impact Assessment Framework: Methodical Approach",
-        "kind": "Framework",
-        "note": "The methodology behind the National Adaptation Plan's vulnerability assessments.",
-        "image": "assets/img/reports/methodology.jpg"
+        "title": "Qatar and Environmental Sustainability",
+        "kind": "Publication",
+        "note": "A green vision for a prosperous future.",
+        "image": "assets/img/reports/environmental-sustainability.jpg"
       }
     ],
     "cta": {
@@ -453,42 +471,6 @@ window.PAVILION_CONTENT = {
     }
   },
   "footer": {
-    "columns": [
-      {
-        "title": "Laws and agreements",
-        "links": [
-          {
-            "label": "Environmental laws and regulations",
-            "href": "https://www.mecc.gov.qa/english/LawsandAgreements/Pages/LawsandRegulations.aspx"
-          },
-          {
-            "label": "Environmental agreements",
-            "href": "https://www.mecc.gov.qa/english/LawsandAgreements/Pages/Agreements.aspx"
-          },
-          {
-            "label": "Publications",
-            "href": "https://www.mecc.gov.qa/english/awarenessandmedia/pages/publications.aspx"
-          }
-        ]
-      },
-      {
-        "title": "Nature reserves",
-        "links": [
-          {
-            "label": "Al Reem Reserve",
-            "href": "https://www.mecc.gov.qa/english/awarenessandmedia/pages/al-reem-reserve.aspx"
-          },
-          {
-            "label": "Al Jnoub Reserve",
-            "href": "https://www.mecc.gov.qa/english/awarenessandmedia/pages/al-jnoub-natural-reserve.aspx"
-          },
-          {
-            "label": "Al Wusail Reserve",
-            "href": "https://www.mecc.gov.qa/english/awarenessandmedia/pages/al-wusil-reserve.aspx"
-          }
-        ]
-      }
-    ],
     "contact": {
       "address": "Ministry of Environment and Climate Change (MECC), State of Qatar, P.O. Box 24334, Doha, Qatar",
       "mapHref": "https://goo.gl/maps/9cuEsvz6bTAhZjUr8",

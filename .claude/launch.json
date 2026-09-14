@@ -4,8 +4,9 @@
     {
       "name": "pavilion",
       "runtimeExecutable": "node",
-      "runtimeArgs": [".claude/serve.js", "4173"],
-      "port": 4173
+      "runtimeArgs": [".claude/serve.js"],
+      "port": 4173,
+      "autoPort": true
     }
   ]
 }
