@@ -64,7 +64,8 @@ Each person is listed once, in `programme.speakers`:
 ```
 
 Events refer to speakers by `id`. The same roster renders the **Speakers** directory
-under the programme, in array order — which follows the brochure's Speakers pages
+under the programme — collapsed by default behind a native `<details>` toggle
+(`directory.show` / `directory.hide` label it) — in array order, which follows the brochure's Speakers pages
 (MECC first). A directory card links to every session that lists its `id`; a speaker
 listed in no event (e.g. Eng. Ahmed Al Sada, Eng. Mahmoud al Marwani) still gets a
 card, without a link. To move a speaker between panels, change the ids — nothing else.

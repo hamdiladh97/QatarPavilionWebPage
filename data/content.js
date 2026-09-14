@@ -156,7 +156,9 @@ window.PAVILION_CONTENT = {
     "directory": {
       "eyebrow": "Speakers",
       "heading": "Speakers at the Qatar Pavilion",
-      "intro": "The officials and experts taking part in the Qatar Pavilion side events at COP31."
+      "intro": "The officials and experts taking part in the Qatar Pavilion side events at COP31.",
+      "show": "View all speakers",
+      "hide": "Hide speakers"
     },
     "speakers": [
       {

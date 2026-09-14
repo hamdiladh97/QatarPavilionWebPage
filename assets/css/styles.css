@@ -666,6 +666,18 @@ p { text-wrap: pretty; }
    The crossings stay within the portrait band, so every line of text sits
    on a single layer and keeps its contrast.                             */
 .directory { margin-top: var(--qp-space-4xl); }
+.directory .section__head { margin-bottom: var(--qp-space-lg); }
+.directory__details > summary { list-style: none; cursor: pointer; }
+.directory__details > summary::-webkit-details-marker { display: none; }
+.directory__details[open] .directory__show,
+.directory__details:not([open]) .directory__hide { display: none; }
+.directory__chev { display: inline-block; transition: transform var(--qp-dur-base) var(--qp-ease); }
+.directory__details[open] .directory__chev { transform: rotate(180deg); }
+/* room above the first row for its diamonds */
+.directory__details[open] .speakers--directory {
+  margin-top: calc(var(--qp-space-2xl) + var(--qp-space-md));
+  animation: panelIn var(--qp-dur-slow) var(--qp-ease) both;
+}
 .speakers--directory {
   --dir-cols: 4;
   display: flex; flex-wrap: wrap; justify-content: center;

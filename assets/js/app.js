@@ -260,7 +260,16 @@
           '<h3 class="section__title">' + esc(d.heading) + "</h3>" +
           '<p class="section__intro">' + esc(d.intro) + "</p>" +
         "</div>" +
-        '<ul class="speakers speakers--directory" data-reveal>' + directory + "</ul>" +
+        /* ponytail: native <details> — closed by default, expand state and
+           keyboard handling come from the browser */
+        '<details class="directory__details">' +
+          '<summary class="btn btn--outline" data-reveal>' +
+            '<span class="directory__show">' + esc(d.show) + "</span>" +
+            '<span class="directory__hide">' + esc(d.hide) + "</span>" +
+            '<span class="directory__chev" aria-hidden="true">&darr;</span>' +
+          "</summary>" +
+          '<ul class="speakers speakers--directory">' + directory + "</ul>" +
+        "</details>" +
       "</div>" +
       "</div></section>";
   }
