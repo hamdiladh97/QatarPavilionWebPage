@@ -106,17 +106,17 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-1.jpg",
         "imageAlt": "A cracked drought plain giving way to a green river corridor and a city skyline",
         "description": "As countries move beyond the formulation of National Adaptation Plans (NAPs), the emphasis is increasingly on implementation, delivery, and impact. Translating adaptation priorities into concrete actions requires effective governance, financing mechanisms, coordination across sectors, and systems to track progress. This panel discussion explores how countries are advancing NAP implementation in practice, highlighting challenges, enabling conditions, and lessons learned.",
-        "speakers": ["saad-al-hitmi", "john-verdieck", "fatma-varank", "rohini-kohli"]
+        "speakers": ["saad-al-hitmi", "john-verdieck", "fatma-varank", "julie-teng"]
       },
       {
         "no": "02",
-        "title": "MRV Systems for Implementation and Accountability",
+        "title": "Transparency Systems for Implementation and Accountability",
         "theme": "Energy Transition and Mitigation",
         "start": "2026-11-12T13:00:00+03:00",
         "end": "2026-11-12T14:00:00+03:00",
         "image": "assets/img/scenes/event-2.jpg",
         "imageAlt": "Renewable energy infrastructure under an open sky",
-        "description": "Measurement, reporting, and verification (MRV) systems are essential not only for transparency, but also for guiding climate action implementation and accountability. Well-designed MRV systems support policy-making, track progress, and inform future investments. This panel discusses how countries are operationalizing MRV systems that serve both reporting obligations and implementation needs.",
+        "description": "Measurement, reporting, and verification systems are essential not only for transparency, but also for guiding climate action implementation and accountability. Well-designed transparency systems support policy-making, track progress, and inform future investments. This panel discusses how countries are operationalizing transparency systems that serve both reporting obligations and implementation needs.",
         "speakers": ["mohamed-al-marri", "suh-yong-chung", "maria-del-pilar-bueno", "siti-nadia-nurul-azizah"]
       },
       {
@@ -128,7 +128,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-3.jpg",
         "imageAlt": "A city under construction beside wind turbines and solar arrays at sunrise",
         "description": "As updated Nationally Determined Contributions (NDCs) are submitted, attention is increasingly focused on implementation. Delivering NDC commitments requires strong coordination across sectors, clear policy frameworks, financing strategies, and monitoring systems. This panel discussion explores practical approaches to implementing NDCs and turning ambition into measurable results.",
-        "speakers": ["baligh-awad", "axel-michaelowa", "elisabeth-turk", "yalchin-rafiyev"]
+        "speakers": ["noora-al-yafie", "axel-michaelowa", "javier-torner", "john-kilani"]
       },
       {
         "no": "04",
@@ -139,7 +139,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-4.jpg",
         "imageAlt": "A climate analyst reviewing a digital globe and live environmental data",
         "description": "Data, digital platforms, and artificial intelligence are increasingly shaping how climate action is planned, implemented, and monitored. When applied responsibly, digital tools can enhance efficiency, improve decision-making, and strengthen accountability. This panel explores real-world applications, opportunities, and governance considerations related to digital and AI-enabled climate implementation.",
-        "speakers": ["mohamed-al-bader", "zulfiya-khazina", "bernhard-kowatsch", "sasha-luccioni"]
+        "speakers": ["mohamed-al-bader", "colman-hands", "regina-schmidt", "irina-sandu"]
       },
       {
         "no": "05",
@@ -150,7 +150,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-5.jpg",
         "imageAlt": "Delegates working together over maps and climate reporting data",
         "description": "Developing countries face a range of challenges when preparing National Communications, particularly in meeting reporting obligations under the UNFCCC. These challenges can affect their ability to produce comprehensive, accurate, and timely reports on a regular basis. This session will highlight practical experiences from different countries and explore ways to overcome common challenges, address existing gaps, strengthen technical capacities, and enhance the quality and comprehensiveness of National Communications reporting.",
-        "speakers": ["oubay-m-al-khaznadar", "jessica-troni", "pradeep-kurukulasuriya", "baris-karapinar"]
+        "speakers": ["oubay-m-al-khaznadar", "jigme", "pradeep-kurukulasuriya", "baris-karapinar"]
       }
     ],
     "directory": {
@@ -211,11 +211,10 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/mohamed-al-bader.jpg"
       },
       {
-        "id": "baligh-awad",
-        "name": "Mr. Baligh Awad",
-        "role": "Climate Change Engineer",
-        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
-        "photo": "assets/img/speakers/baligh-awad.jpg"
+        "id": "noora-al-yafie",
+        "name": "Ms. Noora al Yafie",
+        "role": "Head of Adaptation Unit",
+        "org": "Ministry of Environment and Climate Change (MECC) — Qatar"
       },
       {
         "id": "maria-del-pilar-bueno",
@@ -239,18 +238,18 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/axel-michaelowa.jpg"
       },
       {
-        "id": "elisabeth-turk",
-        "name": "Dr. Elisabeth Türk",
-        "role": "Director, Economic Cooperation and Trade",
-        "org": "United Nations Economic Commission for Europe (UNECE) — Europe, US, UK",
-        "photo": "assets/img/speakers/elisabeth-turk.jpg"
+        "id": "john-kilani",
+        "name": "Dr. John Kilani",
+        "role": "Expert in Climate Change",
+        "org": "Al Attiyah Foundation — Qatar",
+        "photo": "assets/img/speakers/john-kilani.jpg"
       },
       {
-        "id": "yalchin-rafiyev",
-        "name": "Mr. Yalchin Rafiyev",
-        "role": "Lead Climate Negotiator and Lead Negotiator for COP29 Presidency",
-        "org": "Ministry of Foreign Affairs — COP29 Presidency",
-        "photo": "assets/img/speakers/yalchin-rafiyev.jpg"
+        "id": "javier-torner",
+        "name": "Mr. Javier Torner",
+        "role": "Regional Advisor on Sustainable Development, Housing and Land Management",
+        "org": "United Nations Economic Commission for Europe (UNECE) — Europe, US, UK",
+        "photo": "assets/img/speakers/javier-torner.jpg"
       },
       {
         "id": "siti-nadia-nurul-azizah",
@@ -260,32 +259,32 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/siti-nadia-nurul-azizah.jpg"
       },
       {
-        "id": "rohini-kohli",
-        "name": "Ms. Rohini Kohli",
-        "role": "Head of Climate Change Adaptation (Policy)",
-        "org": "UNDP",
-        "photo": "assets/img/speakers/rohini-kohli.jpg"
+        "id": "julie-teng",
+        "name": "Ms. Julie Teng",
+        "role": "Technical Specialist on Adaptation Policy and Planning",
+        "org": "United Nations Development Programme (UNDP)",
+        "photo": "assets/img/speakers/julie-teng.jpg"
       },
       {
-        "id": "bernhard-kowatsch",
-        "name": "Mr. Bernhard Kowatsch",
-        "role": "Head, Innovation Accelerator",
-        "org": "World Food Programme (WFP) — Germany",
-        "photo": "assets/img/speakers/bernhard-kowatsch.jpg"
+        "id": "regina-schmidt",
+        "name": "Ms. Regina Schmidt",
+        "role": "Head of SDG2 Acceleration",
+        "org": "United Nations World Food Programme Innovation (WFP)",
+        "photo": "assets/img/speakers/regina-schmidt.jpg"
       },
       {
-        "id": "sasha-luccioni",
-        "name": "Ms. Sasha Luccioni",
-        "role": "AI & Climate Lead",
-        "org": "Hugging Face — Canada",
-        "photo": "assets/img/speakers/sasha-luccioni.jpg"
+        "id": "irina-sandu",
+        "name": "Ms. Irina Sandu",
+        "role": "Deputy Director of Science and Innovation",
+        "org": "Copernicus Climate Change Service (ECMWF) — Europe",
+        "photo": "assets/img/speakers/irina-sandu.jpg"
       },
       {
-        "id": "jessica-troni",
-        "name": "Ms. Jessica Troni",
-        "role": "Senior Programme Officer, Head of Adaptation Unit",
-        "org": "United Nations Environment Programme (UNEP)",
-        "photo": "assets/img/speakers/jessica-troni.jpg"
+        "id": "jigme",
+        "name": "Mr. Jigme",
+        "role": "Transparency Manager",
+        "org": "UNFCCC Secretariat — Worldwide",
+        "photo": "assets/img/speakers/jigme.jpg"
       },
       {
         "id": "john-verdieck",
@@ -295,11 +294,11 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/john-verdieck.jpg"
       },
       {
-        "id": "zulfiya-khazina",
-        "name": "Ms. Zulfiya Khazina",
-        "role": "NAP Project Manager",
-        "org": "Global Green Growth Institute (GGGI) — Global",
-        "photo": "assets/img/speakers/zulfiya-khazina.jpg"
+        "id": "colman-hands",
+        "name": "Dr. Colman Hands",
+        "role": "Sustainable Energy Programs Manager",
+        "org": "Al Attiyah Foundation — Qatar",
+        "photo": "assets/img/speakers/colman-hands.jpg"
       },
       {
         "id": "pradeep-kurukulasuriya",
@@ -319,8 +318,8 @@ window.PAVILION_CONTENT = {
   },
   "highlights": {
     "eyebrow": "Qatar & MECC",
-    "heading": "Key Highlights & Impact",
-    "intro": "In 2026 the Ministry documented a year of tangible progress in advancing Qatar's national climate agenda — aligned with the Paris Agreement, the Third National Development Strategy and Qatar National Vision 2030.",
+    "heading": "Key Highlights & Impact 2023–2026",
+    "intro": "Across 2023–2026 the Ministry turned Qatar's national climate priorities into delivery — aligned with the Paris Agreement, the Third National Development Strategy and Qatar National Vision 2030.",
     "groups": [
       {
         "title": "Launch of the National Adaptation Plan (NAP)",
@@ -337,7 +336,7 @@ window.PAVILION_CONTENT = {
             "note": "Incorporated into the final NAP report."
           },
           {
-            "value": 3,
+            "value": 5,
             "label": "Workshops & events",
             "note": "Delivered with national stakeholders."
           },
@@ -345,22 +344,40 @@ window.PAVILION_CONTENT = {
             "value": 6,
             "label": "Sectors",
             "note": "Adaptation measures collected through stakeholder questionnaires."
+          },
+          {
+            "value": 28,
+            "label": "Measures",
+            "note": "Adaptation measures identified across the six sectors."
+          },
+          {
+            "value": 127,
+            "label": "Actions",
+            "note": "Set out under those measures."
+          },
+          {
+            "value": 280,
+            "label": "Projects",
+            "note": "Identified to deliver them."
           }
         ]
       },
       {
-        "title": "COP30 Amazonia presence",
+        "title": "COPs presence",
+        "tags": [
+          "Climate negotiations — active participation"
+        ],
         "stats": [
           {
-            "value": 5,
+            "value": 26,
             "label": "Side events",
-            "note": "Designed with concept notes, talking points and design materials. 21+ since 2022."
+            "note": "Organized to share knowledge and raise awareness on key climate change topics."
           },
           {
-            "value": 25,
+            "value": 135,
             "suffix": "+",
             "label": "Speakers and moderators",
-            "note": "Mobilized. 65+ since 2022."
+            "note": "Mobilized."
           }
         ]
       },
@@ -368,9 +385,10 @@ window.PAVILION_CONTENT = {
         "title": "Knowledge products and reports",
         "stats": [
           {
-            "value": 13,
+            "value": 28,
+            "suffix": "+",
             "label": "Knowledge products",
-            "note": "Delivered. 27 since 2022."
+            "note": "Delivered."
           }
         ]
       },
@@ -378,7 +396,8 @@ window.PAVILION_CONTENT = {
         "title": "Capacity building",
         "stats": [
           {
-            "value": 10,
+            "value": 19,
+            "suffix": "+",
             "label": "Workshops",
             "note": "Delivered to build national technical capacity."
           }
@@ -389,23 +408,29 @@ window.PAVILION_CONTENT = {
         "tags": [
           "National Adaptation Plan",
           "NDC 3.0",
+          "National Environment and Climate Change Strategy 2024–2030",
           "Qatar's National Climate Transparency System Report"
         ],
         "stats": [
           {
-            "value": 3,
+            "value": 4,
             "label": "Policies",
-            "note": "Delivered. 14+ since 2022."
+            "note": "Delivered."
           }
         ]
       },
       {
-        "title": "Regional and international participation",
+        "title": "National, regional and international participation",
         "stats": [
           {
             "value": 8,
-            "label": "Meetings and conferences",
-            "note": "In which MECC participated."
+            "label": "National participations",
+            "note": "In national events and joint technical collaborations."
+          },
+          {
+            "value": 13,
+            "label": "Regional and international",
+            "note": "Meetings, conferences and events."
           }
         ]
       }

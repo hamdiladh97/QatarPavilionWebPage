@@ -18,7 +18,7 @@ assets/css/styles.css      components
 assets/js/app.js           rendering + countdown, tabs, counters, scrollspy
 assets/img/logos/          Qatar Pavilion, COP31 Türkiye, MECC marks
 assets/img/scenes/         hero, Qatar map, one image per side event
-assets/img/speakers/       22 speaker portraits
+assets/img/speakers/       21 speaker portraits (one card falls back to initials)
 .claude/launch.json        local preview config (not needed in production)
 ```
 
@@ -69,6 +69,11 @@ under the programme — collapsed by default behind a native `<details>` toggle
 (MECC first). A directory card links to every session that lists its `id`; a speaker
 listed in no event (e.g. Eng. Ahmed Al Sada, Eng. Mahmoud al Marwani) still gets a
 card, without a link. To move a speaker between panels, change the ids — nothing else.
+
+Omit `photo` and the card draws the same ring and ground with the speaker's initials
+inside, which is how the brochure prints a card it has no portrait for
+(Ms. Noora al Yafie). Drop a `320×320` JPEG in `assets/img/speakers/` and add the
+`photo` key to replace it.
 
 ### Countdown
 

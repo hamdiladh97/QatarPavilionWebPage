@@ -643,6 +643,14 @@ p { text-wrap: pretty; }
   transition: transform var(--qp-dur-base) var(--qp-ease);
 }
 .speaker:hover .speaker__photo { transform: scale(1.04); }
+.speaker__photo--initials {
+  display: grid; place-items: center;
+  font-family: var(--qp-font-display);
+  font-weight: var(--qp-display-bold);
+  font-size: calc(var(--portrait-size) / 3);
+  line-height: 1;
+  color: var(--text-gold);
+}
 .speaker__name {
   font-family: var(--qp-font-display);
   font-weight: var(--qp-display-bold);
@@ -1005,6 +1013,9 @@ p { text-wrap: pretty; }
   .panel__media img { aspect-ratio: 16 / 9; }
   .mecc__emblem { display: none; }
   .stat-card--wide { grid-column: span 1; }
+  /* the NAP card carries seven figures; stacked in one narrow column it runs
+     far taller than the card beside it and leaves that card half empty */
+  .stat-card--wide .stat-card__list { grid-template-columns: repeat(auto-fit, minmax(126px, 1fr)); }
   .rail { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
   /* the bridging diamond is dropped on the last card of each row */
   .speakers--directory { --dir-cols: 3; }

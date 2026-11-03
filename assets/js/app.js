@@ -167,9 +167,21 @@
   }
   var STATUS_TEXT = { live: "Live now", past: "Concluded", upcoming: "Upcoming" };
 
+  /* capitals only, so "Ms. Noora al Yafie" gives NY, not Na */
+  function initials(name) {
+    return name.split(/\s+/)
+      .filter(function (w) { return /^[A-ZÀ-Ý]/.test(w) && !/^(Eng|Mr|Ms|Mrs|Dr|Prof)\.$/.test(w); })
+      .slice(0, 2).map(function (w) { return w[0]; }).join("");
+  }
+
   function speakerCard(s, extra) {
     return '<li class="speaker">' +
-      '<img class="speaker__photo" src="' + esc(s.photo) + '" alt="' + esc(s.name) + '" loading="lazy">' +
+      /* the brochure prints a few cards without a portrait; the ring and
+         ground are already on .speaker__photo, so initials fill it */
+      (s.photo
+        ? '<img class="speaker__photo" src="' + esc(s.photo) + '" alt="' + esc(s.name) + '" loading="lazy">'
+        : '<p class="speaker__photo speaker__photo--initials" aria-hidden="true">' +
+            esc(initials(s.name)) + "</p>") +
       /* hyphenated parts never split: "Suh-Yong", "Al-Khaznadar" */
       '<p class="speaker__name">' + esc(s.name).replace(/\S+-\S+/g, "<span>$&</span>") + "</p>" +
       (s.role ? '<p class="speaker__role">' + esc(s.role) + "</p>" : "") +
