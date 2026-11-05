@@ -238,6 +238,13 @@
           "</div>" +
         "</div>" +
 
+        /* ponytail: an event may open with remarks from someone who is not
+           on the panel; reuse the speaker card and grid, no new markup */
+        (byId[ev.opener]
+          ? '<h4 class="eyebrow panel__sub">Opening remarks</h4>' +
+            '<ul class="speakers">' + speakerCard(byId[ev.opener]) + "</ul>"
+          : "") +
+
         /* speakers get the full panel width so all four sit on one row */
         '<h4 class="eyebrow panel__sub">Speakers</h4>' +
         '<ul class="speakers">' +
@@ -252,7 +259,7 @@
        to the session(s) they speak at */
     var directory = p.speakers.map(function (s) {
       return speakerCard(s, p.events.map(function (ev, i) {
-        return ev.speakers.indexOf(s.id) < 0 ? "" :
+        return ev.speakers.indexOf(s.id) < 0 && ev.opener !== s.id ? "" :
           '<a class="speaker__session" href="#tab-' + i + '" data-tab="' + i + '">' +
             "<span>Side-Event " + esc(ev.no) + " &middot;</span> <span>" + dayLabel(ev.start) + "</span></a>";
       }).join(""));

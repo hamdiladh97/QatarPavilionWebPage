@@ -106,7 +106,8 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-1.jpg",
         "imageAlt": "A cracked drought plain giving way to a green river corridor and a city skyline",
         "description": "As countries move beyond the formulation of National Adaptation Plans (NAPs), the emphasis is increasingly on implementation, delivery, and impact. Translating adaptation priorities into concrete actions requires effective governance, financing mechanisms, coordination across sectors, and systems to track progress. This panel discussion explores how countries are advancing NAP implementation in practice, highlighting challenges, enabling conditions, and lessons learned.",
-        "speakers": ["saad-al-hitmi", "john-verdieck", "fatma-varank", "julie-teng"]
+        "opener": "ahmed-mohamed-al-sada",
+        "speakers": ["saad-al-hitmi", "john-verdieck", "jahan-chowdhury", "julie-teng"]
       },
       {
         "no": "02",
@@ -117,7 +118,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-2.jpg",
         "imageAlt": "Renewable energy infrastructure under an open sky",
         "description": "Measurement, reporting, and verification systems are essential not only for transparency, but also for guiding climate action implementation and accountability. Well-designed transparency systems support policy-making, track progress, and inform future investments. This panel discusses how countries are operationalizing transparency systems that serve both reporting obligations and implementation needs.",
-        "speakers": ["mohamed-al-marri", "suh-yong-chung", "maria-del-pilar-bueno", "siti-nadia-nurul-azizah"]
+        "speakers": ["mohamed-al-marri", "jabiru-salisu", "james-fann", "olivia-powis"]
       },
       {
         "no": "03",
@@ -128,7 +129,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-3.jpg",
         "imageAlt": "A city under construction beside wind turbines and solar arrays at sunrise",
         "description": "As updated Nationally Determined Contributions (NDCs) are submitted, attention is increasingly focused on implementation. Delivering NDC commitments requires strong coordination across sectors, clear policy frameworks, financing strategies, and monitoring systems. This panel discussion explores practical approaches to implementing NDCs and turning ambition into measurable results.",
-        "speakers": ["noora-al-yafie", "axel-michaelowa", "javier-torner", "john-kilani"]
+        "speakers": ["noora-al-yafie", "axel-michaelowa", "lea-ranalder", "thomas-wencker"]
       },
       {
         "no": "04",
@@ -139,7 +140,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-4.jpg",
         "imageAlt": "A climate analyst reviewing a digital globe and live environmental data",
         "description": "Data, digital platforms, and artificial intelligence are increasingly shaping how climate action is planned, implemented, and monitored. When applied responsibly, digital tools can enhance efficiency, improve decision-making, and strengthen accountability. This panel explores real-world applications, opportunities, and governance considerations related to digital and AI-enabled climate implementation.",
-        "speakers": ["mohamed-al-bader", "colman-hands", "regina-schmidt", "irina-sandu"]
+        "speakers": ["mohamed-al-bader", "colman-hands", "richard-choularton", "irina-sandu"]
       },
       {
         "no": "05",
@@ -150,7 +151,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-5.jpg",
         "imageAlt": "Delegates working together over maps and climate reporting data",
         "description": "Developing countries face a range of challenges when preparing National Communications, particularly in meeting reporting obligations under the UNFCCC. These challenges can affect their ability to produce comprehensive, accurate, and timely reports on a regular basis. This session will highlight practical experiences from different countries and explore ways to overcome common challenges, address existing gaps, strengthen technical capacities, and enhance the quality and comprehensiveness of National Communications reporting.",
-        "speakers": ["oubay-m-al-khaznadar", "jigme", "pradeep-kurukulasuriya", "baris-karapinar"]
+        "speakers": ["mahmoud-al-marwani", "jigme", "pradeep-kurukulasuriya", "baris-karapinar"]
       }
     ],
     "directory": {
@@ -176,11 +177,11 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/saad-al-hitmi.jpg"
       },
       {
-        "id": "fatma-varank",
-        "name": "Ms. Fatma Varank",
-        "role": "Deputy Minister – Chief Climate Change Negotiator",
-        "org": "Ministry of Environment, Urbanization and Climate Change — Türkiye",
-        "photo": "assets/img/speakers/fatma-varank.jpg"
+        "id": "jahan-chowdhury",
+        "name": "Mr. Jahan Chowdhury",
+        "role": "Chief of Unit for Climate and Environment",
+        "org": "International Fund for Agricultural Development (IFAD) — Global",
+        "photo": "assets/img/speakers/jahan-chowdhury.jpg"
       },
       {
         "id": "mahmoud-al-marwani",
@@ -197,13 +198,6 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/mohamed-al-marri.jpg"
       },
       {
-        "id": "oubay-m-al-khaznadar",
-        "name": "Mr. Oubay M. Al-Khaznadar",
-        "role": "Climate Engineer",
-        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
-        "photo": "assets/img/speakers/oubay-m-al-khaznadar.jpg"
-      },
-      {
         "id": "mohamed-al-bader",
         "name": "Mr. Mohamed al Bader",
         "role": "Head",
@@ -214,21 +208,22 @@ window.PAVILION_CONTENT = {
         "id": "noora-al-yafie",
         "name": "Ms. Noora al Yafie",
         "role": "Head of Adaptation Unit",
-        "org": "Ministry of Environment and Climate Change (MECC) — Qatar"
+        "org": "Ministry of Environment and Climate Change (MECC) — Qatar",
+        "photo": "assets/img/speakers/noora-al-yafie.jpg"
       },
       {
-        "id": "maria-del-pilar-bueno",
-        "name": "Ms. María del Pilar Bueno",
-        "role": "Former Secretary of Climate Change of Argentina / IDEAM",
-        "org": "Ministry of Environment — Colombia",
-        "photo": "assets/img/speakers/maria-del-pilar-bueno.jpg"
+        "id": "james-fann",
+        "name": "Mr. James Fann",
+        "role": "President and Chief Executive Officer",
+        "org": "International CCS Knowledge Centre — Canada",
+        "photo": "assets/img/speakers/james-fann.jpg"
       },
       {
-        "id": "suh-yong-chung",
-        "name": "Mr. Suh-Yong Chung",
-        "role": "Former Greenhouse Gas Inventory & Research Center (GIR) advisor",
-        "org": "Korea Environment Institute (KEI) — Republic of Korea",
-        "photo": "assets/img/speakers/suh-yong-chung.jpg"
+        "id": "jabiru-salisu",
+        "name": "H.E. Jabiru Salisu",
+        "role": "Chief Executive Officer",
+        "org": "AUDA-NEPAD — Nigeria",
+        "photo": "assets/img/speakers/jabiru-salisu.jpg"
       },
       {
         "id": "axel-michaelowa",
@@ -238,25 +233,25 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/axel-michaelowa.jpg"
       },
       {
-        "id": "john-kilani",
-        "name": "Dr. John Kilani",
-        "role": "Expert in Climate Change",
-        "org": "Al Attiyah Foundation — Qatar",
-        "photo": "assets/img/speakers/john-kilani.jpg"
+        "id": "thomas-wencker",
+        "name": "Dr. Thomas Wencker",
+        "role": "Climate Change Mitigation Expert",
+        "org": "DEval — Germany",
+        "photo": "assets/img/speakers/thomas-wencker.jpg"
       },
       {
-        "id": "javier-torner",
-        "name": "Mr. Javier Torner",
-        "role": "Regional Advisor on Sustainable Development, Housing and Land Management",
-        "org": "United Nations Economic Commission for Europe (UNECE) — Europe, US, UK",
-        "photo": "assets/img/speakers/javier-torner.jpg"
+        "id": "lea-ranalder",
+        "name": "Ms. Lea Ranalder",
+        "role": "Energy Transition and Sustainable Cities Expert",
+        "org": "United Nations Habitat — Global",
+        "photo": "assets/img/speakers/lea-ranalder.jpg"
       },
       {
-        "id": "siti-nadia-nurul-azizah",
-        "name": "Ms. Siti Nadia Nurul Azizah",
-        "role": "Nature-based Solutions Specialist",
-        "org": "Ministry of Environment and Forestry — Indonesia",
-        "photo": "assets/img/speakers/siti-nadia-nurul-azizah.jpg"
+        "id": "olivia-powis",
+        "name": "Ms. Olivia Powis",
+        "role": "Chief Executive Officer",
+        "org": "Carbon Capture and Storage Association (CCSA) — UK",
+        "photo": "assets/img/speakers/olivia-powis.jpg"
       },
       {
         "id": "julie-teng",
@@ -266,11 +261,11 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/julie-teng.jpg"
       },
       {
-        "id": "regina-schmidt",
-        "name": "Ms. Regina Schmidt",
-        "role": "Head of SDG2 Acceleration",
-        "org": "United Nations World Food Programme Innovation (WFP)",
-        "photo": "assets/img/speakers/regina-schmidt.jpg"
+        "id": "richard-choularton",
+        "name": "Mr. Richard Choularton",
+        "role": "Director of Climate and Resilience Service",
+        "org": "World Food Programme (WFP) — Global",
+        "photo": "assets/img/speakers/richard-choularton.jpg"
       },
       {
         "id": "irina-sandu",
