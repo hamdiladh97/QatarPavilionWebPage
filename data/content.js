@@ -118,7 +118,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-2.jpg",
         "imageAlt": "Renewable energy infrastructure under an open sky",
         "description": "Measurement, reporting, and verification systems are essential not only for transparency, but also for guiding climate action implementation and accountability. Well-designed transparency systems support policy-making, track progress, and inform future investments. This panel discusses how countries are operationalizing transparency systems that serve both reporting obligations and implementation needs.",
-        "speakers": ["mohamed-al-marri", "jabiru-salisu", "james-fann", "olivia-powis"]
+        "speakers": ["mohamed-al-marri", "usman-muhammad", "daile-zeng", "olivia-powis"]
       },
       {
         "no": "03",
@@ -151,7 +151,7 @@ window.PAVILION_CONTENT = {
         "image": "assets/img/scenes/event-5.jpg",
         "imageAlt": "Delegates working together over maps and climate reporting data",
         "description": "Developing countries face a range of challenges when preparing National Communications, particularly in meeting reporting obligations under the UNFCCC. These challenges can affect their ability to produce comprehensive, accurate, and timely reports on a regular basis. This session will highlight practical experiences from different countries and explore ways to overcome common challenges, address existing gaps, strengthen technical capacities, and enhance the quality and comprehensiveness of National Communications reporting.",
-        "speakers": ["mahmoud-al-marwani", "jigme", "pradeep-kurukulasuriya", "baris-karapinar"]
+        "speakers": ["mahmoud-al-marwani", "tugba-icmeli", "john-kilani", "baris-karapinar"]
       }
     ],
     "directory": {
@@ -212,18 +212,18 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/noora-al-yafie.jpg"
       },
       {
-        "id": "james-fann",
-        "name": "Mr. James Fann",
-        "role": "President and Chief Executive Officer",
-        "org": "International CCS Knowledge Centre — Canada",
-        "photo": "assets/img/speakers/james-fann.jpg"
+        "id": "daile-zeng",
+        "name": "Ms. Daile Zeng",
+        "role": "Environmental Researcher",
+        "org": "Faculty of Forestry and Environmental Stewardship, University of British Columbia",
+        "photo": "assets/img/speakers/daile-zeng.jpg"
       },
       {
-        "id": "jabiru-salisu",
-        "name": "H.E. Jabiru Salisu",
-        "role": "Chief Executive Officer",
-        "org": "AUDA-NEPAD — Nigeria",
-        "photo": "assets/img/speakers/jabiru-salisu.jpg"
+        "id": "usman-muhammad",
+        "name": "Mr. Usman Muhammad",
+        "role": "Executive Director",
+        "org": "Centre for Renewable Energy and Action on Climate Change (CREACC-NG) — Nigeria",
+        "photo": "assets/img/speakers/usman-muhammad.jpg"
       },
       {
         "id": "axel-michaelowa",
@@ -275,11 +275,11 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/irina-sandu.jpg"
       },
       {
-        "id": "jigme",
-        "name": "Mr. Jigme",
-        "role": "Transparency Manager",
-        "org": "UNFCCC Secretariat — Worldwide",
-        "photo": "assets/img/speakers/jigme.jpg"
+        "id": "tugba-icmeli",
+        "name": "Ms. Tugba Icmeli",
+        "role": "Team Lead of the CGE/ETF Support Unit in the Transparency Division",
+        "org": "UNFCCC Secretariat",
+        "photo": "assets/img/speakers/tugba-icmeli.jpg"
       },
       {
         "id": "john-verdieck",
@@ -296,11 +296,11 @@ window.PAVILION_CONTENT = {
         "photo": "assets/img/speakers/colman-hands.jpg"
       },
       {
-        "id": "pradeep-kurukulasuriya",
-        "name": "Mr. Pradeep Kurukulasuriya",
-        "role": "Executive Coordinator, Climate Promise",
-        "org": "UNDP — Sri Lanka",
-        "photo": "assets/img/speakers/pradeep-kurukulasuriya.jpg"
+        "id": "john-kilani",
+        "name": "Dr. John Kilani",
+        "role": "Expert in Climate Change",
+        "org": "Al Attiyah Foundation — Qatar",
+        "photo": "assets/img/speakers/john-kilani.jpg"
       },
       {
         "id": "baris-karapinar",
